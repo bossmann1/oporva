@@ -26,13 +26,8 @@ font-size: 22px; font-weight: 900;
 background: linear-gradient(90deg, #D4AF37, #6C2BD9);
 -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-nav ul {
-list-style: none; display: flex; gap: 20px;
-}
-nav ul a {
-color: #F0F4FF; text-decoration: none; font-size: 14px;
-transition: color 0.3s;
-}
+nav ul { list-style: none; display: flex; gap: 20px; }
+nav ul a { color: #F0F4FF; text-decoration: none; font-size: 14px; }
 nav ul a:hover { color: #D4AF37; }
 
 .hero { text-align: center; padding: 140px 20px 80px; }
@@ -60,45 +55,28 @@ background: linear-gradient(90deg, #D4AF37, #6C2BD9);
 -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .section-subtitle { text-align: center; color: #C0C0C0; margin-bottom: 50px; font-size: 16px; }
-
-.features {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 30px;
-}
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
 .feature-card {
 background: rgba(26, 26, 46, 0.8);
 border: 1px solid rgba(212, 175, 55, 0.3);
 border-radius: 20px; padding: 40px; text-align: center;
-transition: transform 0.3s, border-color 0.3s;
 }
 .feature-card:hover { transform: translateY(-10px); border-color: #D4AF37; }
 .feature-icon { font-size: 48px; margin-bottom: 20px; }
 .feature-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #D4AF37; }
 .feature-desc { color: #C0C0C0; }
-
-.about-content {
-background: rgba(26, 26, 46, 0.6);
-border: 1px solid rgba(212, 175, 55, 0.2);
-border-radius: 20px; padding: 50px;
-text-align: center; font-size: 17px;
-}
+.about-content { background: rgba(26, 26, 46, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 50px; text-align: center; font-size: 17px; }
 .about-content p { margin-bottom: 20px; color: #C0C0C0; }
 .about-content strong { color: #D4AF37; }
-
-.testimonials {
-display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 25px;
-}
-.testimonial {
-background: rgba(26, 26, 46, 0.8);
-border: 1px solid rgba(212, 175, 55, 0.3);
-border-radius: 20px; padding: 30px;
-}
+.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.testimonial { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 30px; }
 .testimonial-text { font-style: italic; color: #C0C0C0; margin-bottom: 20px; }
 .testimonial-author { color: #D4AF37; font-weight: 700; }
 .testimonial-role { color: #6B7280; font-size: 14px; }
 .stars { color: #D4AF37; margin-bottom: 15px; }
+.footer { text-align: center; padding: 40px; color: #6B7280; font-size: 14px; border-top: 1px solid rgba(212, 175, 55, 0.1); margin-top: 40px; }
 
+/* ===== CHAT ===== */
 .chat-widget {
 position: fixed; bottom: 30px; left: 30px;
 width: 65px; height: 65px;
@@ -134,8 +112,6 @@ padding: 18px 20px; display: flex; align-items: center; justify-content: space-b
 .chat-input:focus { border-color: #D4AF37; }
 .chat-send { background: linear-gradient(135deg, #D4AF37, #6C2BD9); border: none; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 18px; color: #0A0A0F; display: flex; align-items: center; justify-content: center; }
 
-.footer { text-align: center; padding: 40px; color: #6B7280; font-size: 14px; border-top: 1px solid rgba(212, 175, 55, 0.1); margin-top: 40px; }
-
 @media (max-width: 600px) {
 nav ul { gap: 10px; }
 nav ul a { font-size: 12px; }
@@ -166,7 +142,7 @@ nav ul a { font-size: 12px; }
 <p class="section-subtitle">قصتنا، رؤيتنا، ورسالتنا</p>
 <div class="about-content">
 <p>في عالم يملؤه التعقيد البيروقراطي، وُلدت <strong>OPORVA</strong> لتكون المرساة التي لا تهتز.</p>
-<p>نحن نرافق رواد الأعمال من <strong>الفكرة الأولى</strong> حتى <strong>لحظة الافتتاح</strong>، بخبرة سنوات في دقائق، وبذكاء اصطناعي متخصص يفهم احتياجاتك.</p>
+<p>نحن نرافق رواد الأعمال من <strong>الفكرة الأولى</strong> حتى <strong>لحظة الافتتاح</strong>، بخبرة سنوات في دقائق.</p>
 <p>هدفنا: أن لا يضيع أي حلم بسبب نقص المعلومات، وأن يحصل كل مؤسس على <strong>الفرصة الذهبية في وقتها المثالي</strong>.</p>
 </div>
 </section>
@@ -175,129 +151,20 @@ nav ul a { font-size: 12px; }
 <h2 class="section-title">خدماتنا</h2>
 <p class="section-subtitle">كل ما تحتاجه لتأسيس مشروعك</p>
 <div class="features">
-<div class="feature-card">
-<div class="feature-icon">🎯</div>
-<div class="feature-title">الفرصة المتاحة</div>
-<div class="feature-desc">نرصد لك الفرص المتاحة في السوق ونحللها بدقة</div>
-</div>
-<div class="feature-card">
-<div class="feature-icon">⏳</div>
-<div class="feature-title">وقتك ذهب</div>
-<div class="feature-desc">نوفر عليك شهوراً من البحث والتخطيط</div>
-</div>
-<div class="feature-card">
-<div class="feature-icon">🏆</div>
-<div class="feature-title">كن المخضرم</div>
-<div class="feature-desc">خبرة سنوات في دقائق</div>
-</div>
-<div class="feature-card">
-<div class="feature-icon">💎</div>
-<div class="feature-title">تستحق الأفضل</div>
-<div class="feature-desc">خدمة مخصصة لك، من البداية حتى الافتتاح</div>
-</div>
+<div class="feature-card"><div class="feature-icon">🎯</div><div class="feature-title">الفرصة المتاحة</div><div class="feature-desc">نرصد لك الفرص المتاحة ونحللها بدقة</div></div>
+<div class="feature-card"><div class="feature-icon">⏳</div><div class="feature-title">وقتك ذهب</div><div class="feature-desc">نوفر عليك شهوراً من البحث والتخطيط</div></div>
+<div class="feature-card"><div class="feature-icon">🏆</div><div class="feature-title">كن المخضرم</div><div class="feature-desc">خبرة سنوات في دقائق</div></div>
+<div class="feature-card"><div class="feature-icon">💎</div><div class="feature-title">تستحق الأفضل</div><div class="feature-desc">خدمة مخصصة من البداية للنهاية</div></div>
 </div>
 </section>
 
-<section id="how-it-works">
-<h2 class="section-title">كيف نعمل؟</h2>
-<p class="section-subtitle">4 خطوات بسيطة لبدء مشروعك</p>
-<div class="features">
-<div class="feature-card">
-<div class="feature-icon">1️⃣</div>
-<div class="feature-title">أدخل بياناتك</div>
-<div class="feature-desc">أخبرنا عن ميزانيتك، مدينتك، ونوع مشروعك</div>
-</div>
-<div class="feature-card">
-<div class="feature-icon">2️⃣</div>
-<div class="feature-title">تحليل فوري</div>
-<div class="feature-desc">نحلل السوق والفرص المتاحة في منطقتك</div>
-</div>
-<div class="feature-card">
-<div class="feature-icon">3️⃣</div>
-<div class="feature-title">خطة مفصلة</div>
-<div class="feature-desc">نقدم لك خطة عمل كاملة خطوة بخطوة</div>
-</div>
-<div class="feature-card">
-<div class="feature-icon">4️⃣</div>
-<div class="feature-title">ابدأ مشروعك</div>
-<div class="feature-desc">نرافقك حتى لحظة الافتتاح وما بعدها</div>
-</div>
-</div>
-</section>
-
-<section id="pricing">
-<h2 class="section-title">الأسعار</h2>
-<p class="section-subtitle">خطط تناسب الجميع</p>
-<div class="features">
-<div class="feature-card">
-<div class="feature-icon">🆓</div>
-<div class="feature-title">مجاني</div>
-<div class="feature-desc">
-<strong style="font-size: 28px; color: #D4AF37;">0 يورو</strong><br><br>
-تحليل أساسي<br>
-خطة عمل بسيطة<br>
-5 أسئلة للمستشار الذكي
-</div>
-</div>
-<div class="feature-card" style="border-color: #D4AF37; border-width: 2px;">
-<div class="feature-icon">⭐</div>
-<div class="feature-title">احترافي</div>
-<div class="feature-desc">
-<strong style="font-size: 28px; color: #D4AF37;">49 يورو/شهر</strong><br><br>
-تحليل كامل<br>
-خطة تفصيلية<br>
-أسئلة غير محدودة<br>
-دعم 24/7
-</div>
-</div>
-<div class="feature-card">
-<div class="feature-icon">👑</div>
-<div class="feature-title">مؤسسي</div>
-<div class="feature-desc">
-<strong style="font-size: 28px; color: #D4AF37;">149 يورو/شهر</strong><br><br>
-كل ما سبق<br>
-مستشار بشري<br>
-مرافقة كاملة حتى الافتتاح
-</div>
-</div>
-</div>
-</section>
-
-<section id="faq">
-<h2 class="section-title">الأسئلة الشائعة</h2>
-<p class="section-subtitle">كل ما تريد معرفته</p>
-<div class="about-content" style="text-align: right;">
-<p><strong>❓ هل OPORVA مجاني؟</strong><br>
-نعم، هناك خطة مجانية تتيح لك تجربة المنصة. الخطط المدفوعة توفر ميزات متقدمة.</p>
-<p><strong>❓ هل يدعم OPORVA اللغة العربية؟</strong><br>
-نعم، المنصة مصممة خصيصاً للناطقين بالعربية، مع دعم كامل للتأسيس في ألمانيا وأوروبا.</p>
-<p><strong>❓ هل يمكنني استخدام OPORVA لأي نوع من المشاريع؟</strong><br>
-نعم، سواء مطعم، مخبز، متجر، أو أي مشروع تجاري آخر.</p>
-<p><strong>❓ كيف يساعدني الذكاء الاصطناعي؟</strong><br>
-المستشار الذكي متاح 24/7 للإجابة على أسئلتك حول الضرائب، التأمين، التراخيص، وغيرها.</p>
-</div>
-</section>
+<section id="testimonials">
 <h2 class="section-title">آراء العملاء</h2>
 <p class="section-subtitle">ماذا قالوا عن OPORVA؟</p>
 <div class="testimonials">
-<div class="testimonial">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<div class="testimonial-text">"OPORVA وفّر عليّ 6 أشهر من البحث والتخطيط. الآن مطعمي يعمل بنجاح!"</div>
-<div class="testimonial-author">أحمد محمد</div>
-<div class="testimonial-role">صاحب مطعم — ديسلدورف</div>
-</div>
-<div class="testimonial">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<div class="testimonial-text">"أفضل استثمار لـ 30 دقيقة من وقتي. المستشار الذكي أجاب على كل أسئلتي."</div>
-<div class="testimonial-author">فاطمة علي</div>
-<div class="testimonial-role">مؤسسة متجر إلكتروني — برلين</div>
-</div>
-<div class="testimonial">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<div class="testimonial-text">"لم أكن أعرف من أين أبدأ. OPORVA كان البوصلة التي أرشدتني."</div>
-<div class="testimonial-author">يوسف إبراهيم</div>
-<div class="testimonial-role">مؤسس مخبز — فيينا</div>
-</div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA وفّر عليّ 6 أشهر من البحث. الآن مطعمي يعمل بنجاح!"</div><div class="testimonial-author">أحمد محمد</div><div class="testimonial-role">صاحب مطعم — ديسلدورف</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"أفضل استثمار لـ 30 دقيقة من وقتي."</div><div class="testimonial-author">فاطمة علي</div><div class="testimonial-role">مؤسسة متجر إلكتروني — برلين</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"لم أكن أعرف من أين أبدأ. OPORVA كان البوصلة."</div><div class="testimonial-author">يوسف إبراهيم</div><div class="testimonial-role">مؤسس مخبز — فيينا</div></div>
 </div>
 </section>
 
@@ -309,9 +176,7 @@ nav ul a { font-size: 12px; }
 <button class="chat-close" onclick="toggleChat()">×</button>
 </div>
 <div class="chat-messages" id="chatMessages">
-<div class="message bot">
-مرحباً! أنا مستشارك الذكي في OPORVA. كيف يمكنني مساعدتك في مشروعك اليوم؟
-</div>
+<div class="message bot">مرحباً! أنا مستشارك الذكي في OPORVA. كيف يمكنني مساعدتك في مشروعك اليوم؟</div>
 </div>
 <div class="chat-input-area">
 <input type="text" class="chat-input" id="chatInput" placeholder="اكتب سؤالك هنا..." onkeypress="handleKeyPress(event)">
@@ -319,9 +184,7 @@ nav ul a { font-size: 12px; }
 </div>
 </div>
 
-<div class="footer">
-© 2026 OPORVA — جميع الحقوق محفوظة
-</div>
+<div class="footer">© 2026 OPORVA — جميع الحقوق محفوظة</div>
 
 <script src="config.js"></script>
 <script type="module" src="script.js"></script>
