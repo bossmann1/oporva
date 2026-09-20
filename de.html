@@ -37,4 +37,92 @@ section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
 .stars { color: #D4AF37; margin-bottom: 12px; }
 .footer { text-align: center; padding: 40px; color: #6B7280; font-size: 13px; border-top: 1px solid rgba(212, 175, 55, 0.1); margin-top: 40px; }
 .chat-widget { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #D4AF37, #6C2BD9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); font-size: 28px; z-index: 1000; }
-.chat-window { position: fixed; bottom: 100px; right: 30px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 140px); background: #12121C; border: 1px solid rgba(212, 175, 55, 0
+.chat-window { position: fixed; bottom: 100px; right: 30px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 140px); background: #12121C; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 20px; overflow: hidden; display: none; flex-direction: column; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); z-index: 999; }
+.chat-window.active { display: flex; }
+.chat-header { background: linear-gradient(90deg, #D4AF37, #6C2BD9); padding: 15px 18px; display: flex; align-items: center; justify-content: space-between; }
+.chat-header-title { font-weight: 700; font-size: 15px; color: #0A0A0F; }
+.chat-close { background: transparent; border: none; color: #0A0A0F; font-size: 22px; cursor: pointer; font-weight: 700; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.message { padding: 10px 14px; border-radius: 14px; font-size: 13px; max-width: 85%; }
+.message.bot { background: rgba(212, 175, 55, 0.12); color: #F0F4FF; align-self: flex-start; border: 1px solid rgba(212, 175, 55, 0.25); }
+.message.user { background: linear-gradient(90deg, #6C2BD9, #D4AF37); color: #0A0A0F; font-weight: 600; align-self: flex-end; }
+.chat-input-area { display: flex; padding: 10px; gap: 8px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: #0A0A0F; }
+.chat-input { flex: 1; padding: 10px 14px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 13px; outline: none; }
+.chat-send { background: linear-gradient(135deg, #D4AF37, #6C2BD9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 16px; color: #0A0A0F; }
+@media (max-width: 600px) { nav ul { gap: 8px; } nav ul a { font-size: 11px; } .hero-logo { font-size: 38px; } }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="brand">⚡ OPORVA</div>
+<ul>
+<li><a href="#about">Über uns</a></li>
+<li><a href="#services">Dienstleistungen</a></li>
+<li><a href="#testimonials">Bewertungen</a></li>
+<li class="lang-switch">
+<a href="index.html">AR</a>
+<a href="en.html">EN</a>
+<a href="de.html" class="active">DE</a>
+</li>
+</ul>
+</nav>
+
+<div class="hero" id="home">
+<div class="hero-logo">⚡ OPORVA</div>
+<p class="hero-tagline">Ihre goldene Chance.. zur perfekten Zeit</p>
+<button class="cta-button" onclick="openChat()">Starten Sie Ihre Reise</button>
+</div>
+
+<section id="about">
+<h2 class="section-title">Über uns</h2>
+<p class="section-subtitle">Unsere Geschichte, Vision und Mission</p>
+<div class="about-content">
+<p>In einer Welt voller bürokratischer Komplexität wurde <strong>OPORVA</strong> geboren, um der Anker zu sein, der niemals wackelt.</p>
+<p>Wir begleiten Unternehmer von der <strong>ersten Idee</strong> bis zum <strong>Eröffnungsmoment</strong>.</p>
+<p>Unser Ziel: Kein Traum sollte durch mangelnde Information verloren gehen.</p>
+</div>
+</section>
+
+<section id="services">
+<h2 class="section-title">Unsere Dienstleistungen</h2>
+<p class="section-subtitle">Alles, was Sie für Ihr Unternehmen brauchen</p>
+<div class="features">
+<div class="feature-card"><div class="feature-icon">🎯</div><div class="feature-title">Verfügbare Chance</div><div class="feature-desc">Wir identifizieren und analysieren Chancen für Sie</div></div>
+<div class="feature-card"><div class="feature-icon">⏳</div><div class="feature-title">Ihre Zeit ist Gold</div><div class="feature-desc">Wir sparen Ihnen Monate der Recherche</div></div>
+<div class="feature-card"><div class="feature-icon">🏆</div><div class="feature-title">Seien Sie der Experte</div><div class="feature-desc">Jahre der Erfahrung in Minuten</div></div>
+<div class="feature-card"><div class="feature-icon">💎</div><div class="feature-title">Sie verdienen das Beste</div><div class="feature-desc">Persönlicher Service von Anfang bis Ende</div></div>
+</div>
+</section>
+
+<section id="testimonials">
+<h2 class="section-title">Kundenbewertungen</h2>
+<p class="section-subtitle">Was sie über OPORVA sagten</p>
+<div class="testimonials">
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA hat mir 6 Monate Recherche erspart."</div><div class="testimonial-author">Ahmed Mohamed</div><div class="testimonial-role">Restaurantbesitzer — Düsseldorf</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"Beste Investition von 30 Minuten meiner Zeit."</div><div class="testimonial-author">Fatima Ali</div><div class="testimonial-role">E-Commerce-Gründerin — Berlin</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA war der Kompass, der mich führte."</div><div class="testimonial-author">Yusuf Ibrahim</div><div class="testimonial-role">Bäckereigründer — Wien</div></div>
+</div>
+</section>
+
+<div class="chat-widget" onclick="toggleChat()">💬</div>
+
+<div class="chat-window" id="chatWindow">
+<div class="chat-header">
+<span class="chat-header-title">⚡ OPORVA Intelligenter Berater</span>
+<button class="chat-close" onclick="toggleChat()">×</button>
+</div>
+<div class="chat-messages" id="chatMessages">
+<div class="message bot">Hallo! Ich bin Ihr intelligenter Berater. Wie kann ich Ihnen helfen?</div>
+</div>
+<div class="chat-input-area">
+<input type="text" class="chat-input" id="chatInput" placeholder="Geben Sie Ihre Frage ein..." onkeypress="handleKeyPress(event)">
+<button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
+</div>
+</div>
+
+<div class="footer">© 2026 OPORVA — Alle Rechte vorbehalten</div>
+
+<script src="script.js"></script>
+</body>
+</html>
