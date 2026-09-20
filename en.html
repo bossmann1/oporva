@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPORVA — Your Opportunity in Time</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 50%, #0A0A0F 100%); color: #F0F4FF; min-height: 100vh; line-height: 1.6; }
+nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10, 10, 15, 0.95); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+nav .brand { font-size: 22px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav ul { list-style: none; display: flex; gap: 15px; align-items: center; }
+nav ul a { color: #F0F4FF; text-decoration: none; font-size: 13px; }
+.lang-switch { display: flex; gap: 5px; }
+.lang-switch a { padding: 4px 8px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; font-size: 11px; }
+.lang-switch a.active { background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; }
+.hero { text-align: center; padding: 140px 20px 80px; }
+.hero-logo { font-size: 56px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+.hero-tagline { font-size: 20px; color: #C0C0C0; margin-bottom: 40px; }
+.cta-button { display: inline-block; padding: 18px 48px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; font-size: 18px; border-radius: 50px; border: none; cursor: pointer; }
+section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 32px; font-weight: 900; margin-bottom: 15px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-subtitle { text-align: center; color: #C0C0C0; margin-bottom: 40px; font-size: 15px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 25px; }
+.feature-card { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 30px; text-align: center; }
+.feature-icon { font-size: 42px; margin-bottom: 15px; }
+.feature-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #D4AF37; }
+.feature-desc { color: #C0C0C0; font-size: 14px; }
+.about-content { background: rgba(26, 26, 46, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 40px; text-align: center; font-size: 16px; }
+.about-content p { margin-bottom: 15px; color: #C0C0C0; }
+.about-content strong { color: #D4AF37; }
+.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.testimonial { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 25px; }
+.testimonial-text { font-style: italic; color: #C0C0C0; margin-bottom: 15px; font-size: 14px; }
+.testimonial-author { color: #D4AF37; font-weight: 700; }
+.testimonial-role { color: #6B7280; font-size: 13px; }
+.stars { color: #D4AF37; margin-bottom: 12px; }
+.footer { text-align: center; padding: 40px; color: #6B7280; font-size: 13px; border-top: 1px solid rgba(212, 175, 55, 0.1); margin-top: 40px; }
+.chat-widget { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #D4AF37, #6C2BD9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); font-size: 28px; z-index: 1000; }
+.chat-window { position: fixed; bottom: 100px; right: 30px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 140px); background: #12121C; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 20px; overflow: hidden; display: none; flex-direction: column; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); z-index: 999; }
+.chat-window.active { display: flex; }
+.chat-header { background: linear-gradient(90deg, #D4AF37, #6C2BD9); padding: 15px 18px; display: flex; align-items: center; justify-content: space-between; }
+.chat-header-title { font-weight: 700; font-size: 15px; color: #0A0A0F; }
+.chat-close { background: transparent; border: none; color: #0A0A0F; font-size: 22px; cursor: pointer; font-weight: 700; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.message { padding: 10px 14px; border-radius: 14px; font-size: 13px; max-width: 85%; }
+.message.bot { background: rgba(212, 175, 55, 0.12); color: #F0F4FF; align-self: flex-start; border: 1px solid rgba(212, 175, 55, 0.25); }
+.message.user { background: linear-gradient(90deg, #6C2BD9, #D4AF37); color: #0A0A0F; font-weight: 600; align-self: flex-end; }
+.chat-input-area { display: flex; padding: 10px; gap: 8px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: #0A0A0F; }
+.chat-input { flex: 1; padding: 10px 14px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 13px; outline: none; }
+.chat-send { background: linear-gradient(135deg, #D4AF37, #6C2BD9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 16px; color: #0A0A0F; }
+@media (max-width: 600px) { nav ul { gap: 8px; } nav ul a { font-size: 11px; } .hero-logo { font-size: 38px; } }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="brand">⚡ OPORVA</div>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#testimonials">Reviews</a></li>
+<li class="lang-switch">
+<a href="index.html">AR</a>
+<a href="en.html" class="active">EN</a>
+<a href="de.html">DE</a>
+</li>
+</ul>
+</nav>
+
+<div class="hero" id="home">
+<div class="hero-logo">⚡ OPORVA</div>
+<p class="hero-tagline">Your Golden Opportunity.. At Its Perfect Time</p>
+<button class="cta-button" onclick="openChat()">Start Your Journey</button>
+</div>
+
+<section id="about">
+<h2 class="section-title">About Us</h2>
+<p class="section-subtitle">Our Story, Vision, and Mission</p>
+<div class="about-content">
+<p>In a world full of bureaucratic complexity, <strong>OPORVA</strong> was born to be the anchor that never shakes.</p>
+<p>We accompany entrepreneurs from the <strong>first idea</strong> to the <strong>opening moment</strong>.</p>
+<p>Our goal: no dream should be lost due to lack of information.</p>
+</div>
+</section>
+
+<section id="services">
+<h2 class="section-title">Our Services</h2>
+<p class="section-subtitle">Everything you need to start your business</p>
+<div class="features">
+<div class="feature-card"><div class="feature-icon">🎯</div><div class="feature-title">Available Opportunity</div><div class="feature-desc">We identify and analyze opportunities for you</div></div>
+<div class="feature-card"><div class="feature-icon">⏳</div><div class="feature-title">Your Time is Gold</div><div class="feature-desc">We save you months of research and planning</div></div>
+<div class="feature-card"><div class="feature-icon">🏆</div><div class="feature-title">Be the Expert</div><div class="feature-desc">Years of experience in minutes</div></div>
+<div class="feature-card"><div class="feature-icon">💎</div><div class="feature-title">You Deserve the Best</div><div class="feature-desc">Personalized service from start to finish</div></div>
+</div>
+</section>
+
+<section id="testimonials">
+<h2 class="section-title">Client Reviews</h2>
+<p class="section-subtitle">What they said about OPORVA</p>
+<div class="testimonials">
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA saved me 6 months of research."</div><div class="testimonial-author">Ahmed Mohamed</div><div class="testimonial-role">Restaurant Owner — Düsseldorf</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"Best investment of 30 minutes of my time."</div><div class="testimonial-author">Fatima Ali</div><div class="testimonial-role">E-commerce Founder — Berlin</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA was the compass that guided me."</div><div class="testimonial-author">Yusuf Ibrahim</div><div class="testimonial-role">Bakery Founder — Vienna</div></div>
+</div>
+</section>
+
+<div class="chat-widget" onclick="toggleChat()">💬</div>
+
+<div class="chat-window" id="chatWindow">
+<div class="chat-header">
+<span class="chat-header-title">⚡ OPORVA Smart Advisor</span>
+<button class="chat-close" onclick="toggleChat()">×</button>
+</div>
+<div class="chat-messages" id="chatMessages">
+<div class="message bot">Hello! I'm your smart advisor. How can I help you?</div>
+</div>
+<div class="chat-input-area">
+<input type="text" class="chat-input" id="chatInput" placeholder="Type your question..." onkeypress="handleKeyPress(event)">
+<button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
+</div>
+</div>
+
+<div class="footer">© 2026 OPORVA — All rights reserved</div>
+
+<script src="script.js"></script>
+</body>
+</html>
