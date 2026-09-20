@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPORVA — Ihre Chance zur richtigen Zeit</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 50%, #0A0A0F 100%); color: #F0F4FF; min-height: 100vh; line-height: 1.6; }
+nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10, 10, 15, 0.95); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+nav .brand { font-size: 22px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav ul { list-style: none; display: flex; gap: 15px; align-items: center; }
+nav ul a { color: #F0F4FF; text-decoration: none; font-size: 13px; }
+.lang-switch { display: flex; gap: 5px; }
+.lang-switch a { padding: 4px 8px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; font-size: 11px; }
+.lang-switch a.active { background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; }
+.hero { text-align: center; padding: 140px 20px 80px; }
+.hero-logo { font-size: 56px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+.hero-tagline { font-size: 20px; color: #C0C0C0; margin-bottom: 40px; }
+.cta-button { display: inline-block; padding: 18px 48px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; font-size: 18px; border-radius: 50px; border: none; cursor: pointer; }
+section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 32px; font-weight: 900; margin-bottom: 15px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-subtitle { text-align: center; color: #C0C0C0; margin-bottom: 40px; font-size: 15px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 25px; }
+.feature-card { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 30px; text-align: center; }
+.feature-icon { font-size: 42px; margin-bottom: 15px; }
+.feature-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #D4AF37; }
+.feature-desc { color: #C0C0C0; font-size: 14px; }
+.about-content { background: rgba(26, 26, 46, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 40px; text-align: center; font-size: 16px; }
+.about-content p { margin-bottom: 15px; color: #C0C0C0; }
+.about-content strong { color: #D4AF37; }
+.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.testimonial { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 25px; }
+.testimonial-text { font-style: italic; color: #C0C0C0; margin-bottom: 15px; font-size: 14px; }
+.testimonial-author { color: #D4AF37; font-weight: 700; }
+.testimonial-role { color: #6B7280; font-size: 13px; }
+.stars { color: #D4AF37; margin-bottom: 12px; }
+.footer { text-align: center; padding: 40px; color: #6B7280; font-size: 13px; border-top: 1px solid rgba(212, 175, 55, 0.1); margin-top: 40px; }
+.chat-widget { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #D4AF37, #6C2BD9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); font-size: 28px; z-index: 1000; }
+.chat-window { position: fixed; bottom: 100px; right: 30px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 140px); background: #12121C; border: 1px solid rgba(212, 175, 55, 0
