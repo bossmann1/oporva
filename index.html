@@ -6,117 +6,51 @@
 <title>OPORVA — فرصتك في وقتها</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-font-family: 'Tajawal', -apple-system, sans-serif;
-background: linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 50%, #0A0A0F 100%);
-color: #F0F4FF;
-min-height: 100vh;
-line-height: 1.6;
-}
-nav {
-position: fixed; top: 0; width: 100%; z-index: 100;
-background: rgba(10, 10, 15, 0.95);
-backdrop-filter: blur(10px);
-padding: 15px 20px;
-display: flex; justify-content: space-between; align-items: center;
-border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-}
-nav .brand {
-font-size: 22px; font-weight: 900;
-background: linear-gradient(90deg, #D4AF37, #6C2BD9);
--webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-nav ul { list-style: none; display: flex; gap: 20px; }
-nav ul a { color: #F0F4FF; text-decoration: none; font-size: 14px; }
+body { font-family: 'Tajawal', -apple-system, sans-serif; background: linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 50%, #0A0A0F 100%); color: #F0F4FF; min-height: 100vh; line-height: 1.6; }
+nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+nav .brand { font-size: 22px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav ul { list-style: none; display: flex; gap: 15px; align-items: center; }
+nav ul a { color: #F0F4FF; text-decoration: none; font-size: 13px; }
 nav ul a:hover { color: #D4AF37; }
-
+.lang-switch { display: flex; gap: 5px; }
+.lang-switch a { padding: 4px 8px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; font-size: 11px; }
+.lang-switch a.active { background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; }
 .hero { text-align: center; padding: 140px 20px 80px; }
-.hero-logo {
-font-size: 56px; font-weight: 900;
-background: linear-gradient(90deg, #D4AF37, #6C2BD9);
--webkit-background-clip: text; -webkit-text-fill-color: transparent;
-margin-bottom: 20px;
-}
+.hero-logo { font-size: 56px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
 .hero-tagline { font-size: 20px; color: #C0C0C0; margin-bottom: 40px; }
-.cta-button {
-display: inline-block; padding: 18px 48px;
-background: linear-gradient(90deg, #D4AF37, #6C2BD9);
-color: #0A0A0F; font-weight: 700; font-size: 18px;
-border-radius: 50px; border: none; cursor: pointer;
-transition: transform 0.3s, box-shadow 0.3s;
-}
-.cta-button:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
-
-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-.section-title {
-text-align: center; font-size: 36px; font-weight: 900;
-margin-bottom: 20px;
-background: linear-gradient(90deg, #D4AF37, #6C2BD9);
--webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.section-subtitle { text-align: center; color: #C0C0C0; margin-bottom: 50px; font-size: 16px; }
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.feature-card {
-background: rgba(26, 26, 46, 0.8);
-border: 1px solid rgba(212, 175, 55, 0.3);
-border-radius: 20px; padding: 40px; text-align: center;
-}
-.feature-card:hover { transform: translateY(-10px); border-color: #D4AF37; }
-.feature-icon { font-size: 48px; margin-bottom: 20px; }
-.feature-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #D4AF37; }
-.feature-desc { color: #C0C0C0; }
-.about-content { background: rgba(26, 26, 46, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 50px; text-align: center; font-size: 17px; }
-.about-content p { margin-bottom: 20px; color: #C0C0C0; }
+.cta-button { display: inline-block; padding: 18px 48px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; font-size: 18px; border-radius: 50px; border: none; cursor: pointer; }
+section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 32px; font-weight: 900; margin-bottom: 15px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-subtitle { text-align: center; color: #C0C0C0; margin-bottom: 40px; font-size: 15px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 25px; }
+.feature-card { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 30px; text-align: center; }
+.feature-icon { font-size: 42px; margin-bottom: 15px; }
+.feature-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #D4AF37; }
+.feature-desc { color: #C0C0C0; font-size: 14px; }
+.about-content { background: rgba(26, 26, 46, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 40px; text-align: center; font-size: 16px; }
+.about-content p { margin-bottom: 15px; color: #C0C0C0; }
 .about-content strong { color: #D4AF37; }
-.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-.testimonial { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 30px; }
-.testimonial-text { font-style: italic; color: #C0C0C0; margin-bottom: 20px; }
+.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.testimonial { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; padding: 25px; }
+.testimonial-text { font-style: italic; color: #C0C0C0; margin-bottom: 15px; font-size: 14px; }
 .testimonial-author { color: #D4AF37; font-weight: 700; }
-.testimonial-role { color: #6B7280; font-size: 14px; }
-.stars { color: #D4AF37; margin-bottom: 15px; }
-.footer { text-align: center; padding: 40px; color: #6B7280; font-size: 14px; border-top: 1px solid rgba(212, 175, 55, 0.1); margin-top: 40px; }
-
-/* ===== CHAT ===== */
-.chat-widget {
-position: fixed; bottom: 30px; left: 30px;
-width: 65px; height: 65px;
-background: linear-gradient(135deg, #D4AF37, #6C2BD9);
-border-radius: 50%; display: flex; align-items: center; justify-content: center;
-cursor: pointer; box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-font-size: 30px; z-index: 1000;
-}
-.chat-window {
-position: fixed; bottom: 110px; left: 30px;
-width: 380px; max-width: calc(100vw - 40px);
-height: 550px; max-height: calc(100vh - 150px);
-background: #12121C;
-border: 1px solid rgba(212, 175, 55, 0.4);
-border-radius: 20px; overflow: hidden;
-display: none; flex-direction: column;
-box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-z-index: 999;
-}
+.testimonial-role { color: #6B7280; font-size: 13px; }
+.stars { color: #D4AF37; margin-bottom: 12px; }
+.footer { text-align: center; padding: 40px; color: #6B7280; font-size: 13px; border-top: 1px solid rgba(212, 175, 55, 0.1); margin-top: 40px; }
+.chat-widget { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #D4AF37, #6C2BD9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); font-size: 28px; z-index: 1000; }
+.chat-window { position: fixed; bottom: 100px; left: 30px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 140px); background: #12121C; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 20px; overflow: hidden; display: none; flex-direction: column; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); z-index: 999; }
 .chat-window.active { display: flex; }
-.chat-header {
-background: linear-gradient(90deg, #D4AF37, #6C2BD9);
-padding: 18px 20px; display: flex; align-items: center; justify-content: space-between;
-}
-.chat-header-title { font-weight: 700; font-size: 16px; color: #0A0A0F; }
+.chat-header { background: linear-gradient(90deg, #D4AF37, #6C2BD9); padding: 15px 18px; display: flex; align-items: center; justify-content: space-between; }
+.chat-header-title { font-weight: 700; font-size: 15px; color: #0A0A0F; }
 .chat-close { background: transparent; border: none; color: #0A0A0F; font-size: 22px; cursor: pointer; font-weight: 700; }
-.chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.message { padding: 12px 16px; border-radius: 14px; font-size: 14px; max-width: 85%; word-wrap: break-word; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.message { padding: 10px 14px; border-radius: 14px; font-size: 13px; max-width: 85%; word-wrap: break-word; }
 .message.bot { background: rgba(212, 175, 55, 0.12); color: #F0F4FF; align-self: flex-start; border: 1px solid rgba(212, 175, 55, 0.25); }
 .message.user { background: linear-gradient(90deg, #6C2BD9, #D4AF37); color: #0A0A0F; font-weight: 600; align-self: flex-end; }
-.chat-input-area { display: flex; padding: 12px; gap: 8px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: #0A0A0F; }
-.chat-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 14px; font-family: inherit; outline: none; }
-.chat-input:focus { border-color: #D4AF37; }
-.chat-send { background: linear-gradient(135deg, #D4AF37, #6C2BD9); border: none; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 18px; color: #0A0A0F; display: flex; align-items: center; justify-content: center; }
-
-@media (max-width: 600px) {
-nav ul { gap: 10px; }
-nav ul a { font-size: 12px; }
-.hero-logo { font-size: 40px; }
-}
+.chat-input-area { display: flex; padding: 10px; gap: 8px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: #0A0A0F; }
+.chat-input { flex: 1; padding: 10px 14px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 13px; font-family: inherit; outline: none; }
+.chat-send { background: linear-gradient(135deg, #D4AF37, #6C2BD9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 16px; color: #0A0A0F; display: flex; align-items: center; justify-content: center; }
+@media (max-width: 600px) { nav ul { gap: 8px; } nav ul a { font-size: 11px; } .hero-logo { font-size: 38px; } }
 </style>
 </head>
 <body>
@@ -124,10 +58,14 @@ nav ul a { font-size: 12px; }
 <nav>
 <div class="brand">⚡ OPORVA</div>
 <ul>
-<li><a href="#home">الرئيسية</a></li>
 <li><a href="#about">من نحن</a></li>
 <li><a href="#services">الخدمات</a></li>
-<li><a href="#testimonials">آراء العملاء</a></li>
+<li><a href="#testimonials">آراء</a></li>
+<li class="lang-switch">
+<a href="index.html" class="active">AR</a>
+<a href="en.html">EN</a>
+<a href="de.html">DE</a>
+</li>
 </ul>
 </nav>
 
@@ -142,8 +80,8 @@ nav ul a { font-size: 12px; }
 <p class="section-subtitle">قصتنا، رؤيتنا، ورسالتنا</p>
 <div class="about-content">
 <p>في عالم يملؤه التعقيد البيروقراطي، وُلدت <strong>OPORVA</strong> لتكون المرساة التي لا تهتز.</p>
-<p>نحن نرافق رواد الأعمال من <strong>الفكرة الأولى</strong> حتى <strong>لحظة الافتتاح</strong>، بخبرة سنوات في دقائق.</p>
-<p>هدفنا: أن لا يضيع أي حلم بسبب نقص المعلومات، وأن يحصل كل مؤسس على <strong>الفرصة الذهبية في وقتها المثالي</strong>.</p>
+<p>نحن نرافق رواد الأعمال من <strong>الفكرة الأولى</strong> حتى <strong>لحظة الافتتاح</strong>.</p>
+<p>هدفنا: أن لا يضيع أي حلم بسبب نقص المعلومات.</p>
 </div>
 </section>
 
@@ -162,9 +100,9 @@ nav ul a { font-size: 12px; }
 <h2 class="section-title">آراء العملاء</h2>
 <p class="section-subtitle">ماذا قالوا عن OPORVA؟</p>
 <div class="testimonials">
-<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA وفّر عليّ 6 أشهر من البحث. الآن مطعمي يعمل بنجاح!"</div><div class="testimonial-author">أحمد محمد</div><div class="testimonial-role">صاحب مطعم — ديسلدورف</div></div>
-<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"أفضل استثمار لـ 30 دقيقة من وقتي."</div><div class="testimonial-author">فاطمة علي</div><div class="testimonial-role">مؤسسة متجر إلكتروني — برلين</div></div>
-<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"لم أكن أعرف من أين أبدأ. OPORVA كان البوصلة."</div><div class="testimonial-author">يوسف إبراهيم</div><div class="testimonial-role">مؤسس مخبز — فيينا</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA وفّر عليّ 6 أشهر من البحث."</div><div class="testimonial-author">أحمد محمد</div><div class="testimonial-role">صاحب مطعم — ديسلدورف</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"أفضل استثمار لـ 30 دقيقة من وقتي."</div><div class="testimonial-author">فاطمة علي</div><div class="testimonial-role">مؤسسة متجر — برلين</div></div>
+<div class="testimonial"><div class="stars">⭐⭐⭐⭐⭐</div><div class="testimonial-text">"OPORVA كان البوصلة التي أرشدتني."</div><div class="testimonial-author">يوسف إبراهيم</div><div class="testimonial-role">مؤسس مخبز — فيينا</div></div>
 </div>
 </section>
 
@@ -176,17 +114,16 @@ nav ul a { font-size: 12px; }
 <button class="chat-close" onclick="toggleChat()">×</button>
 </div>
 <div class="chat-messages" id="chatMessages">
-<div class="message bot">مرحباً! أنا مستشارك الذكي في OPORVA. كيف يمكنني مساعدتك في مشروعك اليوم؟</div>
+<div class="message bot">مرحباً! أنا مستشارك الذكي. كيف يمكنني مساعدتك؟</div>
 </div>
 <div class="chat-input-area">
-<input type="text" class="chat-input" id="chatInput" placeholder="اكتب سؤالك هنا..." onkeypress="handleKeyPress(event)">
+<input type="text" class="chat-input" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleKeyPress(event)">
 <button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
 </div>
 </div>
 
 <div class="footer">© 2026 OPORVA — جميع الحقوق محفوظة</div>
 
-  
-<script type="module" src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
