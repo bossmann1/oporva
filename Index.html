@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLANVOR — من الفكرة إلى الافتتاح</title>
+<meta name="description" content="PLANVOR منصة متخصصة في تأسيس المشاريع في ألمانيا وأوروبا. تحليل مالي، استشارات ضريبية، تأمينات شاملة، ودعم ذكي 24/7.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Tajawal', -apple-system, sans-serif; background: #0A0A0F; color: #F0F4FF; min-height: 100vh; line-height: 1.7; }
+nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.15); }
+nav .brand { font-size: 24px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav ul { list-style: none; display: flex; gap: 18px; align-items: center; }
+nav ul a { color: #F0F4FF; text-decoration: none; font-size: 13px; transition: color 0.3s; }
+nav ul a:hover { color: #D4AF37; }
+.lang-switch { display: flex; gap: 5px; }
+.lang-switch a { padding: 4px 10px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 6px; font-size: 11px; }
+.lang-switch a.active { background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; }
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 20px 60px; overflow: hidden; }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920') center/cover; opacity: 0.15; z-index: -1; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(10,10,15,0.95), rgba(26,26,46,0.85)); z-index: -1; }
+.hero-content { max-width: 900px; z-index: 1; }
+.hero-badge { display: inline-block; padding: 8px 20px; background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 50px; font-size: 13px; color: #D4AF37; margin-bottom: 25px; }
+.hero-logo { font-size: 64px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+.hero-title { font-size: 32px; font-weight: 800; margin-bottom: 20px; }
+.hero-subtitle { font-size: 18px; color: #C0C0C0; margin-bottom: 40px; }
+.hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+.cta-primary { padding: 18px 40px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; font-size: 16px; border-radius: 50px; border: none; cursor: pointer; transition: transform 0.3s; }
+.cta-primary:hover { transform: scale(1.05); }
+.cta-secondary { padding: 18px 40px; background: transparent; color: #D4AF37; font-weight: 700; font-size: 16px; border-radius: 50px; border: 1px solid #D4AF37; cursor: pointer; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; max-width: 1000px; margin: -50px auto 0; padding: 30px; background: rgba(26, 26, 46, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; position: relative; z-index: 10; }
+.stat-item { text-align: center; }
+.stat-number { font-size: 38px; font-weight: 900; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-label { font-size: 13px; color: #C0C0C0; }
+section { padding: 80px 25px; max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 36px; font-weight: 900; margin-bottom: 15px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-subtitle { text-align: center; color: #C0C0C0; margin-bottom: 50px; font-size: 16px; }
+.problem-solution { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.ps-card { padding: 40px; border-radius: 20px; }
+.ps-card.problem { background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); }
+.ps-card.solution { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); }
+.ps-icon { font-size: 48px; margin-bottom: 20px; }
+.ps-title { font-size: 24px; font-weight: 700; margin-bottom: 15px; }
+.ps-card.problem .ps-title { color: #EF4444; }
+.ps-card.solution .ps-title { color: #10B981; }
+.ps-text { color: #C0C0C0; font-size: 15px; }
+.ps-list { list-style: none; margin-top: 20px; }
+.ps-list li { padding: 8px 0; color: #C0C0C0; font-size: 14px; }
+.about-content { background: rgba(26, 26, 46, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 50px; text-align: right; font-size: 16px; }
+.about-content p { margin-bottom: 15px; color: #C0C0C0; }
+.about-content strong { color: #D4AF37; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.feature-card { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; overflow: hidden; transition: transform 0.3s; }
+.feature-card:hover { transform: translateY(-8px); border-color: #D4AF37; }
+.feature-image { width: 100%; height: 180px; object-fit: cover; opacity: 0.85; }
+.feature-content { padding: 25px; }
+.feature-icon { font-size: 38px; margin-bottom: 12px; }
+.feature-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #D4AF37; }
+.feature-desc { color: #C0C0C0; font-size: 14px; }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.why-card { background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(10,10,15,0.9)); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 30px; position: relative; }
+.why-number { position: absolute; top: 15px; left: 20px; font-size: 60px; font-weight: 900; color: rgba(212, 175, 55, 0.1); }
+.why-title { font-size: 18px; font-weight: 700; color: #D4AF37; margin-bottom: 12px; position: relative; }
+.why-desc { color: #C0C0C0; font-size: 14px; position: relative; }
+.investors { background: linear-gradient(135deg, rgba(108, 43, 217, 0.1), rgba(212, 175, 55, 0.05)); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 25px; padding: 50px 30px; text-align: center; }
+.investors-title { font-size: 32px; font-weight: 900; margin-bottom: 20px; color: #D4AF37; }
+.investors-desc { color: #C0C0C0; max-width: 700px; margin: 0 auto 40px; font-size: 16px; }
+.investors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+.investor-stat { background: rgba(10, 10, 15, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 15px; padding: 25px; }
+.investor-stat-num { font-size: 30px; font-weight: 900; color: #D4AF37; }
+.investor-stat-label { font-size: 12px; color: #C0C0C0; margin-top: 5px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.testimonial { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 30px; }
+.testimonial-stars { color: #D4AF37; margin-bottom: 15px; }
+.testimonial-text { font-style: italic; color: #C0C0C0; margin-bottom: 20px; font-size: 14px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #D4AF37; }
+.testimonial-name { color: #D4AF37; font-weight: 700; font-size: 14px; }
+.testimonial-role { color: #6B7280; font-size: 12px; }
+.cta-final { text-align: center; padding: 80px 25px; background: linear-gradient(135deg, rgba(108, 43, 217, 0.15), rgba(212, 175, 55, 0.1)); border-radius: 25px; margin: 40px auto; max-width: 1100px; }
+.cta-final-title { font-size: 34px; font-weight: 900; margin-bottom: 20px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.cta-final-desc { color: #C0C0C0; margin-bottom: 35px; font-size: 16px; }
+.footer { text-align: center; padding: 50px 20px; color: #6B7280; font-size: 13px; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+.chat-widget { position: fixed; bottom: 25px; left: 25px; width: 60px; height: 60px; background: linear-gradient(135deg, #D4AF37, #6C2BD9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); font-size: 26px; z-index: 1000; }
+.chat-window { position: fixed; bottom: 95px; left: 25px; width: 350px; max-width: calc(100vw - 40px); height: 500px; max-height: calc(100vh - 130px); background: #12121C; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 20px; overflow: hidden; display: none; flex-direction: column; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); z-index: 999; }
+.chat-window.active { display: flex; }
+.chat-header { background: linear-gradient(90deg, #D4AF37, #6C2BD9); padding: 15px 18px; display: flex; align-items: center; justify-content: space-between; }
+.chat-header-title { font-weight: 700; font-size: 14px; color: #0A0A0F; }
+.chat-close { background: transparent; border: none; color: #0A0A0F; font-size: 22px; cursor: pointer; font-weight: 700; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.message { padding: 10px 14px; border-radius: 14px; font-size: 13px; max-width: 85%; }
+.message.bot { background: rgba(212, 175, 55, 0.12); color: #F0F4FF; align-self: flex-start; border: 1px solid rgba(212, 175, 55, 0.25); }
+.message.user { background: linear-gradient(90deg, #6C2BD9, #D4AF37); color: #0A0A0F; font-weight: 600; align-self: flex-end; }
+.chat-input-area { display: flex; padding: 10px; gap: 8px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: #0A0A0F; }
+.chat-input { flex: 1; padding: 10px 14px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 13px; outline: none; }
+.chat-send { background: linear-gradient(135deg, #D4AF37, #6C2BD9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 16px; color: #0A0A0F; }
+@media (max-width: 768px) {
+  .problem-solution { grid-template-columns: 1fr; }
+  nav ul a { font-size: 11px; }
+  nav ul { gap: 10px; }
+  .hero-logo { font-size: 42px; }
+  .hero-title { font-size: 22px; }
+  .section-title { font-size: 26px; }
+  .stat-number { font-size: 28px; }
+  .about-content { padding: 30px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="brand">⚡ PLANVOR</div>
+<ul>
+<li><a href="#about">من نحن</a></li>
+<li><a href="#why">لماذا نحن</a></li>
+<li><a href="#services">الخدمات</a></li>
+<li><a href="#investors">للمستثمرين</a></li>
+<li class="lang-switch">
+<a href="index.html" class="active">AR</a>
+<a href="en.html">EN</a>
+<a href="de.html">DE</a>
+</li>
+</ul>
+</nav>
+
+<div class="hero">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-badge">🚀 منصة التأسيس رقم 1 في ألمانيا</div>
+<div class="hero-logo">⚡ PLANVOR</div>
+<h1 class="hero-title">من الفكرة الأولى.. إلى لحظة الافتتاح</h1>
+<p class="hero-subtitle">نرافقك في كل خطوة لتأسيس مشروعك في ألمانيا وأوروبا، بأدوات ذكاء اصطناعي متخصصة ودعم بشري خبير.</p>
+<div class="hero-buttons">
+<button class="cta-primary" onclick="openChat()">ابدأ رحلتك مجاناً</button>
+<button class="cta-secondary" onclick="document.getElementById('investors').scrollIntoView({behavior:'smooth'})">للمستثمرين</button>
+</div>
+</div>
+</div>
+
+<div class="stats">
+<div class="stat-item"><div class="stat-number">+2,500</div><div class="stat-label">مؤسس استخدم PLANVOR</div></div>
+<div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">نسبة رضا العملاء</div></div>
+<div class="stat-item"><div class="stat-number">12</div><div class="stat-label">مدينة ألمانية</div></div>
+<div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">دعم متواصل</div></div>
+</div>
+
+<section id="about">
+<h2 class="section-title">من نحن</h2>
+<p class="section-subtitle">القصة التي بدأت بحلم "أحمد"</p>
+<div class="about-content">
+<p><strong>في مدينة ديسلدورف، كان أحمد يحمل 40,000 يورو وحلماً كبيراً.</strong></p>
+<p>أراد أن يفتح مطعماً صغيراً. لكنه واجه جداراً من التعقيدات: Gewerbeamt، IHK، Finanzamt، التأمينات، الضرائب، التراخيص، الإيجارات...</p>
+<p>بحث في الإنترنت لأشهر. زار 10 مواقع مختلفة. تحدث مع 5 مستشارين. دفع أكثر من 3,000 يورو على استشارات متفرقة.</p>
+<p>وفي النهاية، اكتشف أن <strong>80% من المؤسسين يفشلون في السنة الأولى</strong> — ليس لأنهم غير قادرين، بل لأنهم <strong>لا يجدون الإرشاد المناسب في الوقت المناسب</strong>.</p>
+<p><strong>هنا وُلدت PLANVOR.</strong></p>
+<p>هدفنا واحد: <strong>أن لا يضيع أي حلم بسبب نقص المعلومات</strong>.</p>
+<p style="font-size: 20px; color: #D4AF37; font-weight: 700;">"لأنك تستحق أن تبدأ مشروعك بثقة، وليس بحيرة."</p>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">المشكلة التي نحلها</h2>
+<p class="section-subtitle">لماذا يفشل 80% من المشاريع في ألمانيا؟</p>
+<div class="problem-solution">
+<div class="ps-card problem">
+<div class="ps-icon">❌</div>
+<div class="ps-title">المشكلة</div>
+<p class="ps-text">تأسيس مشروع في ألمانيا معقد ومربك:</p>
+<ul class="ps-list">
+<li>📋 بيروقراطية معقدة (Gewerbeamt, IHK, Finanzamt)</li>
+<li>💸 تكاليف غير متوقعة (تأمينات، ضرائب، رسوم)</li>
+<li>⚖️ قوانين ضريبية معقدة (Gewerbesteuer, Umsatzsteuer)</li>
+<li>🏪 صعوبة إيجاد المكان المناسب</li>
+<li>🤝 عدم معرفة المستشارين الموثوقين</li>
+</ul>
+</div>
+<div class="ps-card solution">
+<div class="ps-icon">✅</div>
+<div class="ps-title">الحل: PLANVOR</div>
+<p class="ps-text">منصة واحدة تحل كل شيء:</p>
+<ul class="ps-list">
+<li>🤖 مستشار ذكي متخصص في القوانين الألمانية</li>
+<li>📊 تحليل مالي دقيق لمشروعك</li>
+<li>🏪 اقتراح أفضل المواقع حسب ميزانيتك</li>
+<li>⚖️ ربطك بمستشارين ضريبيين معتمدين</li>
+<li>🛡️ عروض تأمين شاملة (صحي، قانوني، مسؤولية)</li>
+<li>📋 خطة عمل كاملة من الصفر للافتتاح</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="why">
+<h2 class="section-title">لماذا PLANVOR أفضل من الآخرين؟</h2>
+<p class="section-subtitle">السؤال الذي يطرحه الجميع.. والإجابة الواضحة</p>
+<div class="why-grid">
+<div class="why-card"><div class="why-number">01</div><div class="why-title">ذكاء اصطناعي متخصص</div><div class="why-desc">ليس ChatGPT عاماً. مستشارنا مدرب على القوانين الألمانية والضرائب والتأمينات.</div></div>
+<div class="why-card"><div class="why-number">02</div><div class="why-title">كل شيء في مكان واحد</div><div class="why-desc">لا تحتاج لزيارة 10 مواقع. PLANVOR يجمع كل ما تحتاجه.</div></div>
+<div class="why-card"><div class="why-number">03</div><div class="why-title">أسعار شفافة</div><div class="why-desc">لا مفاجآت. تحليل مالي دقيق قبل أن تبدأ.</div></div>
+<div class="why-card"><div class="why-number">04</div><div class="why-title">دعم 24/7</div><div class="why-desc">مستشارك الذكي متاح دائماً بثلاث لغات.</div></div>
+<div class="why-card"><div class="why-number">05</div><div class="why-title">مجاني للبداية</div><div class="why-desc">ابدأ مجاناً. ادفع فقط للميزات المتقدمة.</div></div>
+<div class="why-card"><div class="why-number">06</div><div class="why-title">مجتمع المؤسسين</div><div class="why-desc">انضم لآلاف المؤسسين في رحلتهم.</div></div>
+</div>
+</section>
+
+<section id="services">
+<h2 class="section-title">ماذا نقدم لك؟</h2>
+<p class="section-subtitle">كل ما تحتاجه لتأسيس مشروعك بنجاح</p>
+<div class="features-grid">
+<div class="feature-card">
+<img class="feature-image" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600" alt="تحليل مالي">
+<div class="feature-content"><div class="feature-icon">📊</div><div class="feature-title">تحليل مالي دقيق</div><div class="feature-desc">نحلل ميزانيتك ونقدم تقديرات دقيقة للتكاليف الشهرية والسنوية.</div></div>
+</div>
+<div class="feature-card">
+<img class="feature-image" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600" alt="مكان">
+<div class="feature-content"><div class="feature-icon">🏪</div><div class="feature-title">إيجاد المكان المثالي</div><div class="feature-desc">نقترح أفضل المواقع حسب ميزانيتك وحجم مشروعك.</div></div>
+</div>
+<div class="feature-card">
+<img class="feature-image" src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600" alt="ضرائب">
+<div class="feature-content"><div class="feature-icon">⚖️</div><div class="feature-title">استشارة ضريبية</div><div class="feature-desc">نشرح كل الضرائب: Gewerbesteuer, Umsatzsteuer, Einkommensteuer.</div></div>
+</div>
+<div class="feature-card">
+<img class="feature-image" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600" alt="تأمين">
+<div class="feature-content"><div class="feature-icon">🛡️</div><div class="feature-title">تأمين شامل</div><div class="feature-desc">نربطك بأفضل عروض التأمين الصحي والقانوني والمسؤولية.</div></div>
+</div>
+</div>
+</section>
+
+<section id="investors">
+<div class="investors">
+<h2 class="investors-title">💼 فرصة استثمارية</h2>
+<p class="investors-desc">PLANVOR ليست مجرد منصة، بل نظام بيئي كامل لتمكين رواد الأعمال في أوروبا.</p>
+<div class="investors-grid">
+<div class="investor-stat"><div class="investor-stat-num">€450B</div><div class="investor-stat-label">حجم سوق تأسيس الشركات في أوروبا</div></div>
+<div class="investor-stat"><div class="investor-stat-num">+5M</div><div class="investor-stat-label">شركة جديدة سنوياً في ألمانيا</div></div>
+<div class="investor-stat"><div class="investor-stat-num">85%</div><div class="investor-stat-label">من المؤسسين يفتقرون للإرشاد</div></div>
+<div class="investor-stat"><div class="investor-stat-num">3x</div><div class="investor-stat-label">نمو متوقع خلال 3 سنوات</div></div>
+</div>
+<button class="cta-primary" onclick="openChat()">تواصل معنا للاستثمار</button>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">ماذا قالوا عنا؟</h2>
+<p class="section-subtitle">آراء حقيقية من مؤسسين استخدموا PLANVOR</p>
+<div class="testimonials-grid">
+<div class="testimonial">
+<div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+<div class="testimonial-text">"PLANVOR وفّر عليّ 6 أشهر من البحث والتخطيط. الآن مطعمي يعمل بنجاح!"</div>
+<div class="testimonial-author">
+<img class="testimonial-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="أحمد">
+<div><div class="testimonial-name">أحمد محمد</div><div class="testimonial-role">صاحب مطعم — ديسلدورف</div></div>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+<div class="testimonial-text">"أفضل استثمار لـ 30 دقيقة. المستشار الذكي أجاب على كل أسئلتي."</div>
+<div class="testimonial-author">
+<img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="فاطمة">
+<div><div class="testimonial-name">فاطمة علي</div><div class="testimonial-role">مؤسسة متجر — برلين</div></div>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+<div class="testimonial-text">"لم أكن أعرف من أين أبدأ. PLANVOR كان البوصلة التي أرشدتني."</div>
+<div class="testimonial-author">
+<img class="testimonial-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="يوسف">
+<div><div class="testimonial-name">يوسف إبراهيم</div><div class="testimonial-role">مؤسس مخبز — فيينا</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="cta-final">
+<h2 class="cta-final-title">جاهز لبدء مشروعك؟</h2>
+<p class="cta-final-desc">انضم لآلاف المؤسسين الذين بدأوا رحلتهم مع PLANVOR. ابدأ مجاناً اليوم.</p>
+<button class="cta-primary" onclick="openChat()">ابدأ الآن مجاناً</button>
+</div>
+
+<div class="footer">© 2026 PLANVOR — جميع الحقوق محفوظة | صُنع بـ ❤️ في ألمانيا</div>
+
+<div class="chat-widget" onclick="toggleChat()">💬</div>
+<div class="chat-window" id="chatWindow">
+<div class="chat-header">
+<span class="chat-header-title">⚡ مستشار PLANVOR الذكي</span>
+<button class="chat-close" onclick="toggleChat()">×</button>
+</div>
+<div class="chat-messages" id="chatMessages">
+<div class="message bot">مرحباً! أنا مستشارك الذكي في PLANVOR. كيف يمكنني مساعدتك؟</div>
+</div>
+<div class="chat-input-area">
+<input type="text" class="chat-input" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleKeyPress(event)">
+<button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
