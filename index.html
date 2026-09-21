@@ -271,7 +271,103 @@ section { padding: 80px 25px; max-width: 1200px; margin: 0 auto; }
 </div>
 </div>
 </section>
+<section id="properties">
+<h2 class="section-title">🏢 العقارات التجارية المتاحة</h2>
+<p class="section-subtitle">مطاعم، محلات، ومكاتب للإيجار في ألمانيا</p>
 
+<!-- فلتر البحث -->
+<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+<input type="text" id="searchCity" placeholder="ابحث بالمدينة..." style="padding: 12px 20px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 14px; min-width: 200px;">
+<select id="filterType" style="padding: 12px 20px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 14px;">
+<option value="">كل الأنواع</option>
+<option value="مطعم">مطعم</option>
+<option value="محل">محل تجاري</option>
+<option value="مكتب">مكتب</option>
+</select>
+<select id="filterBudget" style="padding: 12px 20px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 14px;">
+<option value="">كل الميزانيات</option>
+<option value="1500">حتى €1,500</option>
+<option value="2500">حتى €2,500</option>
+<option value="4000">حتى €4,000</option>
+</select>
+</div>
+
+<!-- شبكة العقارات -->
+<div class="properties-grid" id="propertiesGrid">
+
+<!-- عقار 1 -->
+<div class="property-card" data-city="ديسلدورف" data-type="مطعم" data-rent="2000">
+<div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&fm=webp&q=80');">
+<span class="property-badge">مطعم</span>
+</div>
+<div class="property-content">
+<h3 class="property-title">مطعم 70م² في Altstadt</h3>
+<p class="property-location">📍 ديسلدورف، Altstadt</p>
+<div class="property-details">
+<div><strong>المساحة:</strong> 70 م²</div>
+<div><strong>الإيجار الصافي:</strong> €2,000/شهر</div>
+<div><strong>Nebenkosten:</strong> €350/شهر</div>
+<div><strong>الوديعة:</strong> €6,000 (3 أشهر)</div>
+</div>
+<div class="property-legal">
+<div><strong>مدة العقد:</strong> 5 سنوات</div>
+<div><strong>حماية المنافسة:</strong> ✅ نعم</div>
+<div><strong>مدة الإشعار:</strong> 3 أشهر</div>
+</div>
+<button class="property-button" onclick="requestProperty('مطعم 70م² في Altstadt')">📩 اطلب معاينة</button>
+</div>
+</div>
+
+<!-- عقار 2 -->
+<div class="property-card" data-city="برلين" data-type="محل" data-rent="1800">
+<div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fm=webp&q=80');">
+<span class="property-badge">محل تجاري</span>
+</div>
+<div class="property-content">
+<h3 class="property-title">محل 50م² في Mitte</h3>
+<p class="property-location">📍 برلين، Mitte</p>
+<div class="property-details">
+<div><strong>المساحة:</strong> 50 م²</div>
+<div><strong>الإيجار الصافي:</strong> €1,800/شهر</div>
+<div><strong>Nebenkosten:</strong> €250/شهر</div>
+<div><strong>الوديعة:</strong> €5,400 (3 أشهر)</div>
+</div>
+<div class="property-legal">
+<div><strong>مدة العقد:</strong> 3 سنوات</div>
+<div><strong>حماية المنافسة:</strong> ⚠️ محدودة</div>
+<div><strong>مدة الإشعار:</strong> 3 أشهر</div>
+</div>
+<button class="property-button" onclick="requestProperty('محل 50م² في Mitte')">📩 اطلب معاينة</button>
+</div>
+</div>
+
+<!-- عقار 3 -->
+<div class="property-card" data-city="ميونيخ" data-type="مطعم" data-rent="3500">
+<div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&fm=webp&q=80');">
+<span class="property-badge">مطعم</span>
+</div>
+<div class="property-content">
+<h3 class="property-title">مطعم 120م² في Schwabing</h3>
+<p class="property-location">📍 ميونيخ، Schwabing</p>
+<div class="property-details">
+<div><strong>المساحة:</strong> 120 م²</div>
+<div><strong>الإيجار الصافي:</strong> €3,500/شهر</div>
+<div><strong>Nebenkosten:</strong> €500/شهر</div>
+<div><strong>الوديعة:</strong> €10,500 (3 أشهر)</div>
+</div>
+<div class="property-legal">
+<div><strong>مدة العقد:</strong> 10 سنوات</div>
+<div><strong>حماية المنافسة:</strong> ✅ نعم</div>
+<div><strong>مدة الإشعار:</strong> 6 أشهر</div>
+</div>
+<button class="property-button" onclick="requestProperty('مطعم 120م² في Schwabing')">📩 اطلب معاينة</button>
+</div>
+</div>
+
+</div>
+
+<p style="text-align: center; color: #6B7280; margin-top: 40px; font-size: 14px;">📌 لدينا 500+ عرض عقاري إضافي. تواصل معنا للحصول على القائمة الكاملة.</p>
+</section>
 <section id="investors">
 <div class="investors">
 <h2 class="investors-title">💼 فرصة استثمارية</h2>
