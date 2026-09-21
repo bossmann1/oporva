@@ -1,56 +1,93 @@
-const chatWindow = document.getElementById('chatWindow');
-const chatMessages = document.getElementById('chatMessages');
-const chatInput = document.getElementById('chatInput');
-const chatSend = document.getElementById('chatSend');
+// ملف script.js - تحديث كامل لربط الموقع مع Puter.js
 
-const API_URL = 'https://wild-tree-5125.hozayelhelal.workers.dev';
+// 1. تحميل مكتبة Puter.js (يجب أن يكون هذا في أعلى الملف)
+const puterScript = document.createElement('script');
+puterScript.src = 'https://js.puter.com/v2/';
+document.head.appendChild(puterScript);
 
-window.toggleChat = function() {
-    chatWindow.classList.toggle('active');
-    if (chatWindow.classList.contains('active')) chatInput.focus();
-};
+// 2. انتظر تحميل المكتبة، ثم ابدأ في تعريف الوظائف
+puterScript.onload = function() {
+    console.log("Puter.js loaded successfully!");
 
-window.openChat = function() {
-    chatWindow.classList.add('active');
-    chatInput.focus();
-};
+    // العثور على عناصر واجهة المحادثة
+    const chatWindow = document.getElementById('chatWindow');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
 
-window.handleKeyPress = function(e) {
-    if (e.key === 'Enter') sendMessage();
-};
+    // دالة لفتح وإغلاق نافذة المحادثة
+    window.toggleChat = function() {
+        chatWindow.classList.toggle('active');
+        if (chatWindow.classList.contains('active')) chatInput.focus();
+    };
 
-function addMessage(text, sender) {
-    const msg = document.createElement('div');
-    msg.className = 'message ' + sender;
-    msg.textContent = text;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    window.openChat = function() {
+        chatWindow.classList.add('active');
+        chatInput.focus();
+    };
 
-window.sendMessage = async function() {
-    const message = chatInput.value.trim();
-    if (!message) return;
-    addMessage(message, 'user');
-    chatInput.value = '';
-    chatSend.disabled = true;
-    const typingMsg = document.createElement('div');
-    typingMsg.className = 'message bot';
-    typingMsg.textContent = 'يكتب...';
-    chatMessages.appendChild(typingMsg);
+    // دالة للتعامل مع الضغط على زر Enter
+    window.handleKeyPress = function(e) {
+        if (e.key === 'Enter') sendMessage();
+    };
 
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: message })
-        });
-        const data = await response.json();
-        typingMsg.remove();
-        addMessage(data.reply, 'bot');
-    } catch (error) {
-        typingMsg.remove();
-        addMessage('عذراً، حدث خطأ. حاول مرة أخرى.', 'bot');
+    // دالة لإضافة رسالة إلى نافذة المحادثة
+    function addMessage(text, sender) {
+        const msg = document.createElement('div');
+        msg.className = 'message ' + sender;
+        msg.innerHTML = text.replace(/\n/g, '<br>'); // لدعم الأسطر الجديدة
+        chatMessages.appendChild(msg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-    chatSend.disabled = false;
-    chatInput.focus();
+
+    // الدالة الرئيسية لإرسال الرسالة
+    window.sendMessage = async function() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // 1. عرض رسالة المستخدم فوراً
+        addMessage(message, 'user');
+        chatInput.value = '';
+        chatSend.disabled = true;
+
+        // 2. عرض مؤشر "يكتب..."
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'message bot';
+        typingIndicator.textContent = 'يكتب...';
+        chatMessages.appendChild(typingIndicator);
+
+        try {
+            // 3. استدعاء Puter.js مع النموذج المحدد
+            // يمكنك تغيير النموذج إلى "openai/gpt-5.4-nano" أو "anthropic/claude-sonnet-5" إذا أردت
+            const response = await puter.ai.chat(message, {
+                model: 'google/gemini-2.5-flash', 
+                stream: true // تفعيل البث للحصول على رد فوري
+            });
+
+            // 4. إزالة مؤشر "يكتب..."
+            typingIndicator.remove();
+
+            // 5. معالجة الرد المتدفق وإضافته للواجهة
+            const botMessageDiv = document.createElement('div');
+            botMessageDiv.className = 'message bot';
+            chatMessages.appendChild(botMessageDiv);
+
+            let fullResponse = '';
+            for await (const part of response) {
+                if (part?.text) {
+                    fullResponse += part.text;
+                    botMessageDiv.innerHTML = fullResponse.replace(/\n/g, '<br>');
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }
+
+        } catch (error) {
+            console.error('Puter.js Error:', error);
+            typingIndicator.remove();
+            addMessage('عذراً، حدث خطأ. حاول مرة أخرى.', 'bot');
+        } finally {
+            chatSend.disabled = false;
+            chatInput.focus();
+        }
+    };
 };
