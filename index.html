@@ -95,7 +95,25 @@ section { padding: 80px 25px; max-width: 1200px; margin: 0 auto; }
 .chat-input-area { display: flex; padding: 10px; gap: 8px; border-top: 1px solid rgba(212, 175, 55, 0.2); background: #0A0A0F; }
 .chat-input { flex: 1; padding: 10px 14px; border-radius: 30px; border: 1px solid rgba(212, 175, 55, 0.3); background: #1A1A2E; color: #F0F4FF; font-size: 13px; outline: none; }
 .chat-send { background: linear-gradient(135deg, #D4AF37, #6C2BD9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 16px; color: #0A0A0F; }
-@media (max-width: 768px) {
+/* ===== قسم العقارات ===== */
+.properties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+.property-card { background: rgba(26, 26, 46, 0.8); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+.property-card:hover { transform: translateY(-8px); border-color: #D4AF37; }
+.property-image { height: 200px; background-size: cover; background-position: center; position: relative; }
+.property-badge { position: absolute; top: 15px; right: 15px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; font-size: 12px; padding: 6px 14px; border-radius: 20px; }
+.property-content { padding: 25px; }
+.property-title { font-size: 20px; font-weight: 700; color: #D4AF37; margin-bottom: 8px; }
+.property-location { color: #C0C0C0; font-size: 14px; margin-bottom: 20px; }
+.property-details { background: rgba(10, 10, 15, 0.5); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+.property-details div { color: #C0C0C0; font-size: 13px; padding: 5px 0; }
+.property-details strong { color: #F0F4FF; }
+.property-legal { background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 15px; margin-bottom: 20px; }
+.property-legal div { color: #C0C0C0; font-size: 13px; padding: 5px 0; }
+.property-legal strong { color: #F0F4FF; }
+.property-button { width: 100%; padding: 14px; background: linear-gradient(90deg, #D4AF37, #6C2BD9); color: #0A0A0F; font-weight: 700; font-size: 15px; border-radius: 50px; border: none; cursor: pointer; transition: transform 0.3s; }
+.property-button:hover { transform: scale(1.02); }
+
+@media (max-width: 768px) {@media (max-width: 768px) {
   .problem-solution { grid-template-columns: 1fr; }
   nav ul a { font-size: 11px; }
   nav ul { gap: 8px; }
