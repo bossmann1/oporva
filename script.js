@@ -6,6 +6,34 @@ let hasGreeted = false;
 let currentLang = document.documentElement.lang || 'ar';
 let isListening = false;
 let recognition = null;
+let currentAudio = null;
+let isSpeaking = false;
+
+// ===== إيقاف كل الأصوات =====
+function stopAllAudio() {
+    // إيقاف Puter audio
+    if (currentAudio) {
+        try {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
+        } catch (e) { console.log('Audio stop error:', e); }
+    }
+    // إيقاف speechSynthesis
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
+    isSpeaking = false;
+    updateStopButton(false);
+}
+
+// ===== تحديث زر الإيقاف =====
+function updateStopButton(speaking) {
+    const stopBtn = document.getElementById('stopAudioButton');
+    if (stopBtn) {
+        stopBtn.style.display = speaking ? 'flex' : 'none';
+    }
+}
 
 // ===== الترحيب الصوتي =====
 function speakGreeting() {
@@ -17,65 +45,84 @@ function speakGreeting() {
     speakText(greetings[currentLang] || greetings.ar);
 }
 
-// ===== تحويل النص إلى صوت (Puter.js TTS) =====
+// ===== تحويل النص إلى صوت =====
 async function speakText(text) {
+    // أوقف أي صوت قيد التشغيل
+    stopAllAudio();
+    
     try {
-        // استخدام xAI TTS (سريع ويدعم العربية)
+        isSpeaking = true;
+        updateStopButton(true);
+        
         const audio = await puter.ai.txt2speech(text, {
             provider: 'xai',
-            voice: 'ara', // صوت دافئ وودود
+            voice: 'ara',
             language: 'ar'
         });
+        
+        currentAudio = audio;
+        
+        audio.onended = () => {
+            isSpeaking = false;
+            currentAudio = null;
+            updateStopButton(false);
+        };
+        
+        audio.onerror = () => {
+            isSpeaking = false;
+            currentAudio = null;
+            updateStopButton(false);
+        };
+        
         audio.play();
     } catch (error) {
-        console.log('Puter TTS failed, trying browser TTS:', error);
-        // بديل: استخدام speechSynthesis المدمج
+        console.log('Puter TTS failed, using browser TTS:', error);
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'ar-SA';
             utterance.rate = 0.95;
             utterance.pitch = 1.05;
+            utterance.onend = () => {
+                isSpeaking = false;
+                updateStopButton(false);
+            };
             window.speechSynthesis.cancel();
             window.speechSynthesis.speak(utterance);
+        } else {
+            isSpeaking = false;
+            updateStopButton(false);
         }
     }
 }
 
-// ===== تحويل الصوت إلى نص (Web Speech API) =====
+// ===== تحويل الصوت إلى نص =====
 function initSpeechRecognition() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-        console.log('Speech Recognition not supported');
-        return null;
-    }
+    if (!SpeechRecognition) return null;
     
     const rec = new SpeechRecognition();
     rec.lang = currentLang === 'ar' ? 'ar-SA' : (currentLang === 'de' ? 'de-DE' : 'en-US');
     rec.continuous = false;
     rec.interimResults = false;
-    rec.maxAlternatives = 1;
     
     rec.onstart = () => {
         isListening = true;
         updateMicButton(true);
+        // أوقف أي صوت قيد التشغيل
+        stopAllAudio();
     };
     
     rec.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        chatInput.value = transcript;
+        document.getElementById('chatInput').value = transcript;
         isListening = false;
         updateMicButton(false);
-        // إرسال تلقائي بعد التعرف
         setTimeout(() => sendMessage(), 300);
     };
     
     rec.onerror = (event) => {
-        console.log('Speech recognition error:', event.error);
         isListening = false;
         updateMicButton(false);
-        if (event.error === 'not-allowed') {
-            addMessage('⚠️ يرجى السماح بالوصول إلى الميكروفون', 'bot');
-        }
     };
     
     rec.onend = () => {
@@ -86,7 +133,6 @@ function initSpeechRecognition() {
     return rec;
 }
 
-// ===== تحديث زر الميكروفون =====
 function updateMicButton(listening) {
     const micBtn = document.getElementById('micButton');
     if (micBtn) {
@@ -100,46 +146,51 @@ function updateMicButton(listening) {
     }
 }
 
-// ===== إضافة زر الميكروفون إلى الواجهة =====
-function addMicButton() {
+// ===== إضافة زر الميكروفون وزر الإيقاف =====
+function addControls() {
     const inputArea = document.querySelector('.chat-input-area');
     if (!inputArea) return;
     
-    // إنشاء زر الميكروفون
+    // زر الميكروفون
     const micBtn = document.createElement('button');
     micBtn.id = 'micButton';
     micBtn.className = 'chat-mic';
     micBtn.innerHTML = '🎤';
     micBtn.title = 'اضغط للتحدث';
     micBtn.onclick = toggleListening;
-    
-    // إضافته قبل حقل الكتابة
     inputArea.insertBefore(micBtn, inputArea.firstChild);
+    
+    // زر إيقاف الصوت (في رأس المحادثة)
+    const chatHeader = document.querySelector('.chat-header');
+    if (chatHeader) {
+        const stopBtn = document.createElement('button');
+        stopBtn.id = 'stopAudioButton';
+        stopBtn.className = 'stop-audio';
+        stopBtn.innerHTML = '⏹️';
+        stopBtn.title = 'إيقاف الصوت';
+        stopBtn.style.display = 'none';
+        stopBtn.onclick = stopAllAudio;
+        chatHeader.insertBefore(stopBtn, chatHeader.querySelector('.chat-close'));
+    }
 }
 
-// ===== تبديل الاستماع =====
 function toggleListening() {
     if (!recognition) {
         recognition = initSpeechRecognition();
         if (!recognition) {
-            addMessage('⚠️ متصفحك لا يدعم التعرف على الصوت. استخدم Chrome أو Edge.', 'bot');
+            addMessage('⚠️ متصفحك لا يدعم التعرف على الصوت. استخدم Chrome.', 'bot');
             return;
         }
     }
-    
     if (isListening) {
         recognition.stop();
     } else {
-        try {
-            recognition.start();
-        } catch (e) {
-            console.log('Recognition already started');
-        }
+        try { recognition.start(); } catch (e) {}
     }
 }
 
-// ===== إضافة CSS لزر الميكروفون =====
-function addMicStyles() {
+// ===== CSS للأزرار =====
+function addStyles() {
     const style = document.createElement('style');
     style.textContent = `
         .chat-mic {
@@ -156,10 +207,7 @@ function addMicStyles() {
             transition: all 0.3s;
             flex-shrink: 0;
         }
-        .chat-mic:hover {
-            background: rgba(201, 169, 97, 0.3);
-            transform: scale(1.05);
-        }
+        .chat-mic:hover { background: rgba(201, 169, 97, 0.3); transform: scale(1.05); }
         .chat-mic.listening {
             background: rgba(220, 38, 38, 0.3);
             border-color: #EF4444;
@@ -168,6 +216,28 @@ function addMicStyles() {
         @keyframes pulseMic {
             0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
             50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+        }
+        .stop-audio {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: white;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: 10px;
+            transition: all 0.3s;
+            animation: pulseStop 1.5s infinite;
+        }
+        .stop-audio:hover { background: rgba(239, 68, 68, 0.4); transform: scale(1.1); }
+        @keyframes pulseStop {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+            50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
         }
     `;
     document.head.appendChild(style);
@@ -180,9 +250,8 @@ puterScript.onload = function() {
     const chatInput = document.getElementById('chatInput');
     const chatSend = document.getElementById('chatSend');
 
-    // إضافة زر الميكروفون
-    addMicButton();
-    addMicStyles();
+    addControls();
+    addStyles();
 
     window.toggleChat = function() {
         chatWindow.classList.toggle('active');
@@ -192,6 +261,9 @@ puterScript.onload = function() {
                 hasGreeted = true;
                 setTimeout(speakGreeting, 500);
             }
+        } else {
+            // عند إغلاق النافذة، أوقف الصوت
+            stopAllAudio();
         }
     };
 
@@ -224,6 +296,10 @@ puterScript.onload = function() {
     window.sendMessage = async function() {
         const message = chatInput.value.trim();
         if (!message) return;
+        
+        // أوقف أي صوت قبل إرسال رسالة جديدة
+        stopAllAudio();
+        
         addMessage(message, 'user');
         chatInput.value = '';
         chatSend.disabled = true;
@@ -232,7 +308,6 @@ puterScript.onload = function() {
         typingIndicator.className = 'message bot';
         typingIndicator.textContent = 'يكتب...';
         chatMessages.appendChild(typingIndicator);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
 
         try {
             const response = await puter.ai.chat(message, {
@@ -245,10 +320,13 @@ puterScript.onload = function() {
         } catch (error) {
             console.error('Puter.js Error:', error);
             typingIndicator.remove();
-            addMessage('عذراً، حدث خطأ. حاول مرة أخرى.', 'bot');
+            addMessage('عذراً، حدث خطأ.', 'bot');
         } finally {
             chatSend.disabled = false;
             chatInput.focus();
         }
     };
 };
+
+// ===== إيقاف الصوت عند مغادرة الصفحة =====
+window.addEventListener('beforeunload', stopAllAudio);
