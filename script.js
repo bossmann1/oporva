@@ -2,6 +2,20 @@ const puterScript = document.createElement('script');
 puterScript.src = 'https://js.puter.com/v2/';
 document.head.appendChild(puterScript);
 
+let hasGreeted = false;
+
+function speakGreeting() {
+    if ('speechSynthesis' in window) {
+        const greeting = new SpeechSynthesisUtterance('مرحباً بك في بلان فور. أنا مستشارك الذكي. كيف يمكنني مساعدتك اليوم؟');
+        greeting.lang = 'ar-SA';
+        greeting.rate = 0.9;
+        greeting.pitch = 1.1;
+        greeting.volume = 0.9;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(greeting);
+    }
+}
+
 puterScript.onload = function() {
     const chatWindow = document.getElementById('chatWindow');
     const chatMessages = document.getElementById('chatMessages');
@@ -10,15 +24,28 @@ puterScript.onload = function() {
 
     window.toggleChat = function() {
         chatWindow.classList.toggle('active');
-        if (chatWindow.classList.contains('active')) chatInput.focus();
+        if (chatWindow.classList.contains('active')) {
+            chatInput.focus();
+            if (!hasGreeted) {
+                hasGreeted = true;
+                speakGreeting();
+            }
+        }
     };
+
     window.openChat = function() {
         chatWindow.classList.add('active');
         chatInput.focus();
+        if (!hasGreeted) {
+            hasGreeted = true;
+            speakGreeting();
+        }
     };
+
     window.handleKeyPress = function(e) {
         if (e.key === 'Enter') sendMessage();
     };
+
     window.quickAsk = function(question) {
         chatInput.value = question;
         sendMessage();
