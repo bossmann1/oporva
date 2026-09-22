@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PLANVOR — من الفكرة إلى الافتتاح</title>
-<meta name="description" content="PLANVOR — منصة متخصصة في تأسيس المشاريع في ألمانيا.">
+<meta name="description" content="PLANVOR — منصة متخصصة في تأسيس المشاريع في ألمانيا. عقارات تجارية، تحليل مالي، استشارات ضريبية، وكتب رقمية.">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--gold:#C9A961;--gold-light:#D9BC7A;--blue:#1E40AF;--bg:#0A1628;--text:#F8FAFC;--text-2:#CBD5E1;--text-3:#94A3B8;--border:rgba(201,169,97,0.15);--shadow:0 20px 60px rgba(0,0,0,0.4);--transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
@@ -35,7 +35,19 @@ nav ul a:hover::after{width:100%}
 .lang-switch a{padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:11px;color:var(--text-2);text-decoration:none;transition:var(--transition);font-weight:600}
 .lang-switch a:hover{border-color:var(--gold);color:var(--gold)}
 .lang-switch a.active{background:var(--gold);color:var(--bg);font-weight:700;border-color:var(--gold)}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 25px 100px}
+
+/* ===== شريط الخدمات العلوي ===== */
+.services-bar{position:fixed;top:70px;width:100%;z-index:999;background:rgba(10,22,40,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(96,165,250,0.2);padding:12px 15px;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none}
+.services-bar::-webkit-scrollbar{display:none}
+.service-chip{display:flex;align-items:center;gap:8px;padding:10px 18px;background:linear-gradient(135deg,rgba(30,64,175,0.2),rgba(96,165,250,0.08));border:1px solid rgba(96,165,250,0.3);border-radius:50px;color:#93C5FD;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);flex-shrink:0;position:relative;overflow:hidden;font-family:inherit}
+.service-chip::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(147,197,253,0.3),transparent);transition:left 0.5s}
+.service-chip:hover::before{left:100%}
+.service-chip:hover{background:linear-gradient(135deg,rgba(30,64,175,0.4),rgba(96,165,250,0.2));border-color:#60A5FA;color:#F8FAFC;transform:translateY(-2px);box-shadow:0 8px 25px rgba(96,165,250,0.3)}
+.service-chip.gold{background:linear-gradient(135deg,rgba(201,169,97,0.2),rgba(217,188,122,0.08));border-color:rgba(201,169,97,0.4);color:#C9A961}
+.service-chip.gold:hover{background:linear-gradient(135deg,rgba(201,169,97,0.4),rgba(217,188,122,0.2));border-color:#D9BC7A;color:#F8FAFC;box-shadow:0 8px 25px rgba(201,169,97,0.3)}
+.service-chip-icon{font-size:16px}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:200px 25px 100px}
 .hero-content{max-width:950px;z-index:1;animation:heroFadeIn 1.2s ease-out}
 @keyframes heroFadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(30,64,175,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:50px;font-size:13px;color:#60A5FA;margin-bottom:35px;font-weight:600}
@@ -49,15 +61,18 @@ nav ul a:hover::after{width:100%}
 .cta-primary:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(201,169,97,0.5)}
 .cta-secondary{padding:20px 50px;background:transparent;color:var(--gold);font-weight:700;font-size:17px;border-radius:12px;border:2px solid var(--gold);cursor:pointer;transition:var(--transition);font-family:inherit}
 .cta-secondary:hover{background:rgba(201,169,97,0.1);transform:translateY(-3px)}
+
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:1050px;margin:-60px auto 0;padding:45px;background:rgba(15,23,42,0.95);backdrop-filter:blur(25px);border:1px solid var(--border);border-radius:24px;position:relative;z-index:10;box-shadow:var(--shadow)}
 .stat-item{text-align:center;padding:15px 10px;border-left:1px solid var(--border)}
 .stat-item:first-child{border-left:none}
 .stat-number{font-size:36px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;font-family:'Inter',sans-serif}
 .stat-label{font-size:13px;color:var(--text-3)}
-section{padding:100px 25px;max-width:1200px;margin:0 auto}
+
+section{padding:100px 25px;max-width:1200px;margin:0 auto;scroll-margin-top:150px}
 .section-title{text-align:center;font-size:42px;font-weight:900;margin-bottom:15px;color:var(--text);line-height:1.3}
 .section-title span{color:var(--gold)}
 .section-subtitle{text-align:center;color:var(--text-3);margin-bottom:65px;font-size:17px;max-width:650px;margin-left:auto;margin-right:auto}
+
 .problem-solution{display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .ps-card{padding:50px 45px;border-radius:24px;transition:var(--transition)}
 .ps-card:hover{transform:translateY(-8px)}
@@ -71,6 +86,7 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto}
 .ps-list{list-style:none}
 .ps-list li{padding:10px 0;color:var(--text-2);font-size:14px;border-bottom:1px solid rgba(255,255,255,0.05)}
 .ps-list li:last-child{border-bottom:none}
+
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:28px}
 .feature-card{background:rgba(15,23,42,0.9);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:var(--transition)}
 .feature-card:hover{transform:translateY(-10px);border-color:var(--gold);box-shadow:0 25px 50px rgba(0,0,0,0.5)}
@@ -80,6 +96,7 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto}
 .feature-icon{font-size:42px;margin-bottom:16px;display:inline-block}
 .feature-title{font-size:22px;font-weight:700;margin-bottom:12px;color:var(--gold)}
 .feature-desc{color:var(--text-3);font-size:14px;line-height:1.8}
+
 .properties-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:30px}
 .property-card{background:rgba(15,23,42,0.9);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:var(--transition)}
 .property-card:hover{transform:translateY(-10px);border-color:var(--gold);box-shadow:0 25px 50px rgba(0,0,0,0.5)}
@@ -96,12 +113,15 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto}
 .property-legal strong{color:var(--text)}
 .property-button{width:100%;padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;font-size:15px;border-radius:12px;border:none;cursor:pointer;transition:var(--transition);font-family:inherit}
 .property-button:hover{transform:translateY(-2px)}
+
 .filters{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-bottom:50px}
 .filters input,.filters select{padding:14px 22px;border-radius:12px;border:1px solid var(--border);background:rgba(15,23,42,0.9);color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:var(--transition);min-width:200px}
 .filters input:focus,.filters select:focus{border-color:var(--gold)}
+
 .book-price{font-size:28px;font-weight:900;color:var(--gold);font-family:'Inter',sans-serif}
 .book-button{padding:14px 32px;font-size:14px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;border-radius:10px;border:none;cursor:pointer;transition:var(--transition);font-family:inherit}
 .book-button:hover{transform:translateY(-2px)}
+
 .investors{background:linear-gradient(135deg,rgba(30,64,175,0.15),rgba(201,169,97,0.08));border:1px solid rgba(201,169,97,0.25);border-radius:30px;padding:70px 45px;text-align:center}
 .investors-title{font-size:38px;font-weight:900;margin-bottom:22px;color:var(--gold)}
 .investors-desc{color:var(--text-2);max-width:700px;margin:0 auto 50px;font-size:17px}
@@ -110,20 +130,23 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto}
 .investor-stat:hover{transform:translateY(-6px);border-color:var(--gold)}
 .investor-stat-num{font-size:32px;font-weight:900;color:var(--gold);font-family:'Inter',sans-serif}
 .investor-stat-label{font-size:12px;color:var(--text-3);margin-top:10px}
+
 .about-content{background:rgba(15,23,42,0.7);border:1px solid var(--border);border-radius:24px;padding:55px;text-align:right;font-size:16px}
 .about-content p{margin-bottom:18px;color:var(--text-2);line-height:2}
 .about-content strong{color:var(--gold)}
+
 .cta-final{text-align:center;padding:90px 35px;background:linear-gradient(135deg,rgba(30,64,175,0.15),rgba(201,169,97,0.08));border-radius:30px;margin:50px auto;max-width:1100px;border:1px solid rgba(201,169,97,0.2)}
 .cta-final-title{font-size:40px;font-weight:900;margin-bottom:20px;color:var(--text)}
 .cta-final-title span{color:var(--gold)}
 .cta-final-desc{color:var(--text-2);margin-bottom:45px;font-size:18px;max-width:650px;margin-left:auto;margin-right:auto}
+
 .footer{text-align:center;padding:60px 25px 40px;color:var(--text-3);font-size:13px;border-top:1px solid var(--border);margin-top:60px}
 .footer-brand{font-size:22px;font-weight:900;margin-bottom:15px;color:var(--text)}
 .footer-brand span{color:var(--gold)}
+
 .fade-in{opacity:0;transform:translateY(30px);transition:all 0.8s ease-out}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
-/* ===== الهولوجرام ===== */
 .chat-widget{position:fixed;bottom:30px;left:30px;width:100px;height:100px;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;transition:transform 0.4s;animation:holoFloat 5s ease-in-out infinite}
 .chat-widget:hover{transform:scale(1.12)}
 @keyframes holoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -163,7 +186,6 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto}
 @keyframes pFloat3{0%,100%{transform:translate(0,0);opacity:0}50%{transform:translate(-5px,6px);opacity:1}}
 @keyframes pFloat4{0%,100%{transform:translate(0,0);opacity:0}50%{transform:translate(6px,5px);opacity:1}}
 
-/* ===== نافذة المحادثة ===== */
 .chat-window{position:fixed;bottom:140px;left:30px;width:420px;max-width:calc(100vw - 40px);height:600px;max-height:calc(100vh - 180px);background:linear-gradient(180deg,#0F172A,#0A1628);border:1px solid rgba(96,165,250,0.35);border-radius:24px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.9),0 0 60px rgba(59,130,246,0.2);z-index:9998}
 .chat-window.active{display:flex;animation:slideUp 0.4s cubic-bezier(0.4,0,0.2,1)}
 @keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -202,6 +224,10 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto}
   nav ul{gap:10px}
   nav ul li:not(.lang-switch){display:none}
   .lang-switch a{padding:4px 10px;font-size:10px}
+  .services-bar{top:60px;padding:10px 12px;gap:8px}
+  .service-chip{padding:8px 14px;font-size:12px;gap:6px}
+  .service-chip-icon{font-size:14px}
+  .hero{padding-top:180px !important}
   .hero-logo{font-size:48px}
   .hero-title{font-size:24px}
   .hero-subtitle{font-size:15px}
@@ -238,6 +264,42 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto}
     </li>
   </ul>
 </nav>
+
+<!-- شريط الخدمات -->
+<div class="services-bar">
+  <div class="service-chip gold" onclick="openChat()">
+    <span class="service-chip-icon">🤖</span>
+    <span>مستشار ذكي</span>
+  </div>
+  <a class="service-chip" href="#services">
+    <span class="service-chip-icon">📊</span>
+    <span>تحليل مالي</span>
+  </a>
+  <a class="service-chip" href="#properties">
+    <span class="service-chip-icon">🏪</span>
+    <span>عقارات تجارية</span>
+  </a>
+  <a class="service-chip" href="#services">
+    <span class="service-chip-icon">⚖️</span>
+    <span>استشارات ضريبية</span>
+  </a>
+  <a class="service-chip" href="#services">
+    <span class="service-chip-icon">🛡️</span>
+    <span>تأمينات شاملة</span>
+  </a>
+  <a class="service-chip" href="#books">
+    <span class="service-chip-icon">📚</span>
+    <span>كتب رقمية</span>
+  </a>
+  <a class="service-chip" href="#investors">
+    <span class="service-chip-icon">💼</span>
+    <span>فرص استثمارية</span>
+  </a>
+  <a class="service-chip" href="#about">
+    <span class="service-chip-icon">📖</span>
+    <span>من نحن</span>
+  </a>
+</div>
 
 <div class="hero">
   <div class="hero-content">
@@ -562,4 +624,4 @@ filterBudget.addEventListener('change', filterProperties);
 </script>
 <script src="script.js"></script>
 </body>
-      </html>
+  </html>
