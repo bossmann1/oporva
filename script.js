@@ -60,7 +60,8 @@ puterScript.onload = function() {
             // 3. استدعاء Puter.js مع النموذج المحدد
             // يمكنك تغيير النموذج إلى "openai/gpt-5.4-nano" أو "anthropic/claude-sonnet-5" إذا أردت
             const response = await puter.ai.chat(message, {
-                model: 'gpt-5.4-nano',, 
+    model: 'gpt-5.4-nano'
+});
                 stream: true // تفعيل البث للحصول على رد فوري
             });
 
