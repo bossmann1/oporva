@@ -4,473 +4,493 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PLANVOR — من الفكرة إلى الافتتاح</title>
-<meta name="description" content="PLANVOR منصة متخصصة في تأسيس المشاريع في ألمانيا. عقارات تجارية، تحليل مالي، استشارات ضريبية، وكتب رقمية.">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Tajawal', -apple-system, sans-serif; background: #0A1628; color: #F8FAFC; min-height: 100vh; line-height: 1.7; overflow-x: hidden; }
-.bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 30%, rgba(30, 64, 175, 0.25) 0%, transparent 40%), radial-gradient(circle at 85% 70%, rgba(201, 169, 97, 0.15) 0%, transparent 40%), linear-gradient(180deg, #0A1628, #0F172A); }
+:root{--gold:#C9A961;--gold-light:#D9BC7A;--blue:#1E40AF;--bg:#0A1628;--bg-2:#0F172A;--text:#F8FAFC;--text-2:#CBD5E1;--text-3:#94A3B8;--border:rgba(201,169,97,0.15);--shadow:0 20px 60px rgba(0,0,0,0.4);--transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal','Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7;overflow-x:hidden}
+.particles-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;background:radial-gradient(ellipse at 20% 30%,rgba(30,64,175,0.3) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(201,169,97,0.15) 0%,transparent 50%),linear-gradient(180deg,#0A1628,#050B15)}
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:rgba(201,169,97,0.5);border-radius:50%;animation:floatParticle linear infinite}
+.particle:nth-child(1){left:10%;animation-duration:20s}
+.particle:nth-child(2){left:25%;animation-duration:25s;animation-delay:2s}
+.particle:nth-child(3){left:40%;animation-duration:30s;animation-delay:4s}
+.particle:nth-child(4){left:55%;animation-duration:22s;animation-delay:1s}
+.particle:nth-child(5){left:70%;animation-duration:28s;animation-delay:3s}
+.particle:nth-child(6){left:85%;animation-duration:24s;animation-delay:5s}
+.particle:nth-child(7){left:15%;animation-duration:26s;animation-delay:6s}
+.particle:nth-child(8){left:60%;animation-duration:21s;animation-delay:2s}
+@keyframes floatParticle{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) scale(1);opacity:0}}
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(10,22,40,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:16px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);transition:var(--transition)}
+nav .brand{font-size:26px;font-weight:900;color:var(--text);letter-spacing:1.5px}
+nav .brand span{color:var(--gold)}
+nav ul{list-style:none;display:flex;gap:24px;align-items:center}
+nav ul a{color:var(--text-2);text-decoration:none;font-size:14px;font-weight:500;transition:var(--transition);position:relative;padding:5px 0}
+nav ul a::after{content:'';position:absolute;bottom:0;right:0;width:0;height:2px;background:var(--gold);transition:width 0.3s}
+nav ul a:hover{color:var(--gold)}
+nav ul a:hover::after{width:100%}
+.lang-switch{display:flex;gap:6px;padding-right:18px;border-right:1px solid var(--border);margin-right:6px}
+.lang-switch a{padding:6px 14px;border:1px solid var(--border);border-radius:8px;font-size:11px;color:var(--text-2);text-decoration:none;transition:var(--transition);font-weight:600}
+.lang-switch a:hover{border-color:var(--gold);color:var(--gold)}
+.lang-switch a.active{background:var(--gold);color:var(--bg);font-weight:700;border-color:var(--gold)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 25px 100px}
+.hero-content{max-width:950px;z-index:1;animation:heroFadeIn 1.2s ease-out}
+@keyframes heroFadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:rgba(30,64,175,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:50px;font-size:13px;color:#60A5FA;margin-bottom:35px;font-weight:600}
+.hero-logo{font-size:80px;font-weight:900;color:var(--text);margin-bottom:30px;letter-spacing:3px;line-height:1}
+.hero-logo span{color:var(--gold)}
+.hero-title{font-size:42px;font-weight:700;margin-bottom:28px;line-height:1.5;color:var(--text)}
+.hero-title span{color:var(--gold)}
+.hero-subtitle{font-size:19px;color:var(--text-2);margin-bottom:50px;line-height:1.9;max-width:750px;margin-left:auto;margin-right:auto}
+.hero-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.cta-primary{padding:20px 50px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;font-size:17px;border-radius:12px;border:none;cursor:pointer;transition:var(--transition);box-shadow:0 10px 40px rgba(201,169,97,0.25);font-family:inherit}
+.cta-primary:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(201,169,97,0.5)}
+.cta-secondary{padding:20px 50px;background:transparent;color:var(--gold);font-weight:700;font-size:17px;border-radius:12px;border:2px solid var(--gold);cursor:pointer;transition:var(--transition);font-family:inherit}
+.cta-secondary:hover{background:rgba(201,169,97,0.1);transform:translateY(-3px)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:1050px;margin:-60px auto 0;padding:45px;background:rgba(15,23,42,0.95);backdrop-filter:blur(25px);border:1px solid var(--border);border-radius:24px;position:relative;z-index:10;box-shadow:var(--shadow)}
+.stat-item{text-align:center;padding:15px 10px;border-left:1px solid var(--border);transition:var(--transition)}
+.stat-item:first-child{border-left:none}
+.stat-item:hover{transform:translateY(-5px)}
+.stat-number{font-size:36px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;font-family:'Inter',sans-serif}
+.stat-label{font-size:13px;color:var(--text-3)}
+section{padding:100px 25px;max-width:1200px;margin:0 auto}
+.section-title{text-align:center;font-size:42px;font-weight:900;margin-bottom:15px;color:var(--text);line-height:1.3}
+.section-title span{color:var(--gold)}
+.section-subtitle{text-align:center;color:var(--text-3);margin-bottom:65px;font-size:17px;max-width:650px;margin-left:auto;margin-right:auto}
+.problem-solution{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.ps-card{padding:50px 45px;border-radius:24px;transition:var(--transition)}
+.ps-card:hover{transform:translateY(-8px)}
+.ps-card.problem{background:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.25)}
+.ps-card.solution{background:rgba(5,150,105,0.06);border:1px solid rgba(5,150,105,0.25)}
+.ps-icon{font-size:55px;margin-bottom:22px}
+.ps-title{font-size:28px;font-weight:700;margin-bottom:20px}
+.ps-card.problem .ps-title{color:#EF4444}
+.ps-card.solution .ps-title{color:#10B981}
+.ps-text{color:var(--text-2);font-size:15px;margin-bottom:20px}
+.ps-list{list-style:none}
+.ps-list li{padding:10px 0;color:var(--text-2);font-size:14px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.ps-list li:last-child{border-bottom:none}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:28px}
+.feature-card{background:rgba(15,23,42,0.9);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:var(--transition);position:relative}
+.feature-card:hover{transform:translateY(-10px);border-color:var(--gold);box-shadow:0 25px 50px rgba(0,0,0,0.5)}
+.feature-image{width:100%;height:200px;object-fit:cover;opacity:0.85;transition:transform 0.6s,opacity 0.4s}
+.feature-card:hover .feature-image{transform:scale(1.08);opacity:1}
+.feature-content{padding:30px}
+.feature-icon{font-size:42px;margin-bottom:16px;display:inline-block}
+.feature-title{font-size:22px;font-weight:700;margin-bottom:12px;color:var(--gold)}
+.feature-desc{color:var(--text-3);font-size:14px;line-height:1.8}
+.properties-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:30px}
+.property-card{background:rgba(15,23,42,0.9);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:var(--transition)}
+.property-card:hover{transform:translateY(-10px);border-color:var(--gold);box-shadow:0 25px 50px rgba(0,0,0,0.5)}
+.property-image{height:220px;background-size:cover;background-position:center;position:relative}
+.property-badge{position:absolute;top:18px;right:18px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;font-size:12px;padding:8px 16px;border-radius:8px}
+.property-content{padding:28px}
+.property-title{font-size:21px;font-weight:700;color:var(--gold);margin-bottom:10px}
+.property-location{color:var(--text-3);font-size:14px;margin-bottom:22px}
+.property-details{background:rgba(10,22,40,0.7);border-radius:14px;padding:18px;margin-bottom:15px}
+.property-details div{color:var(--text-2);font-size:13px;padding:6px 0}
+.property-details strong{color:var(--text)}
+.property-legal{background:rgba(30,64,175,0.08);border:1px solid rgba(30,64,175,0.25);border-radius:14px;padding:18px;margin-bottom:22px}
+.property-legal div{color:var(--text-2);font-size:13px;padding:6px 0}
+.property-legal strong{color:var(--text)}
+.property-button{width:100%;padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;font-size:15px;border-radius:12px;border:none;cursor:pointer;transition:var(--transition);font-family:inherit}
+.property-button:hover{transform:translateY(-2px)}
+.filters{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-bottom:50px}
+.filters input,.filters select{padding:14px 22px;border-radius:12px;border:1px solid var(--border);background:rgba(15,23,42,0.9);color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:var(--transition);min-width:200px}
+.filters input:focus,.filters select:focus{border-color:var(--gold)}
+.book-price{font-size:28px;font-weight:900;color:var(--gold);font-family:'Inter',sans-serif}
+.book-button{padding:14px 32px;font-size:14px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;border-radius:10px;border:none;cursor:pointer;transition:var(--transition);font-family:inherit}
+.book-button:hover{transform:translateY(-2px)}
+.investors{background:linear-gradient(135deg,rgba(30,64,175,0.15),rgba(201,169,97,0.08));border:1px solid rgba(201,169,97,0.25);border-radius:30px;padding:70px 45px;text-align:center}
+.investors-title{font-size:38px;font-weight:900;margin-bottom:22px;color:var(--gold)}
+.investors-desc{color:var(--text-2);max-width:700px;margin:0 auto 50px;font-size:17px}
+.investors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;margin-bottom:45px}
+.investor-stat{background:rgba(10,22,40,0.7);border:1px solid rgba(201,169,97,0.2);border-radius:18px;padding:32px 22px;transition:var(--transition)}
+.investor-stat:hover{transform:translateY(-6px);border-color:var(--gold)}
+.investor-stat-num{font-size:32px;font-weight:900;color:var(--gold);font-family:'Inter',sans-serif}
+.investor-stat-label{font-size:12px;color:var(--text-3);margin-top:10px}
+.about-content{background:rgba(15,23,42,0.7);border:1px solid var(--border);border-radius:24px;padding:55px;text-align:right;font-size:16px}
+.about-content p{margin-bottom:18px;color:var(--text-2);line-height:2}
+.about-content strong{color:var(--gold)}
+.cta-final{text-align:center;padding:90px 35px;background:linear-gradient(135deg,rgba(30,64,175,0.15),rgba(201,169,97,0.08));border-radius:30px;margin:50px auto;max-width:1100px;border:1px solid rgba(201,169,97,0.2)}
+.cta-final-title{font-size:40px;font-weight:900;margin-bottom:20px;color:var(--text)}
+.cta-final-title span{color:var(--gold)}
+.cta-final-desc{color:var(--text-2);margin-bottom:45px;font-size:18px;max-width:650px;margin-left:auto;margin-right:auto}
+.footer{text-align:center;padding:60px 25px 40px;color:var(--text-3);font-size:13px;border-top:1px solid var(--border);margin-top:60px}
+.footer-brand{font-size:22px;font-weight:900;margin-bottom:15px;color:var(--text)}
+.footer-brand span{color:var(--gold)}
+.fade-in{opacity:0;transform:translateY(30px);transition:all 0.8s ease-out}
+.fade-in.visible{opacity:1;transform:translateY(0)}
 
-/* Nav */
-nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10, 22, 40, 0.95); backdrop-filter: blur(20px); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(201, 169, 97, 0.15); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); }
-nav .brand { font-size: 24px; font-weight: 900; color: #F8FAFC; letter-spacing: 1px; }
-nav .brand span { color: #C9A961; }
-nav ul { list-style: none; display: flex; gap: 18px; align-items: center; }
-nav ul a { color: #CBD5E1; text-decoration: none; font-size: 13px; transition: all 0.3s; font-weight: 500; }
-nav ul a:hover { color: #C9A961; }
-.lang-switch { display: flex; gap: 6px; padding: 0 12px; border-right: 1px solid rgba(201, 169, 97, 0.2); margin-right: 10px; }
-.lang-switch a { padding: 5px 12px; border: 1px solid rgba(201, 169, 97, 0.3); border-radius: 6px; font-size: 11px; color: #CBD5E1; text-decoration: none; transition: all 0.3s; }
-.lang-switch a.active { background: #C9A961; color: #0A1628; font-weight: 700; border-color: #C9A961; }
+/* ===== رأس الروبوت ===== */
+.chat-widget{position:fixed;bottom:30px;left:30px;width:78px;height:78px;background:linear-gradient(135deg,var(--blue),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 40px rgba(201,169,97,0.5);z-index:9999;transition:transform 0.4s;animation:robotFloat 3s ease-in-out infinite}
+.chat-widget::before{content:'';position:absolute;inset:-6px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--blue));opacity:0.4;animation:pulseRing 2s infinite;z-index:-1}
+@keyframes pulseRing{0%{transform:scale(1);opacity:0.4}100%{transform:scale(1.4);opacity:0}}
+.chat-widget:hover{transform:scale(1.12)}
+@keyframes robotFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.robot-icon{width:48px;height:48px;position:relative;display:flex;align-items:center;justify-content:center}
+.robot-head{width:48px;height:42px;background:#F8FAFC;border-radius:14px 14px 10px 10px;position:relative;box-shadow:inset 0 -4px 0 rgba(30,64,175,0.25),0 4px 10px rgba(0,0,0,0.2)}
+.robot-antenna{width:3px;height:12px;background:#F8FAFC;position:absolute;top:-12px;left:50%;transform:translateX(-50%)}
+.robot-antenna::after{content:'';width:10px;height:10px;background:var(--gold);border-radius:50%;position:absolute;top:-8px;left:50%;transform:translateX(-50%);animation:antennaGlow 1.5s infinite;box-shadow:0 0 10px var(--gold)}
+@keyframes antennaGlow{0%,100%{opacity:1}50%{opacity:0.6}}
+.robot-eye{width:9px;height:9px;background:var(--blue);border-radius:50%;position:absolute;top:14px;animation:eyeBlink 4s infinite}
+.robot-eye.left{left:10px}
+.robot-eye.right{right:10px}
+@keyframes eyeBlink{0%,92%,100%{height:9px}95%{height:2px;transform:translateY(3px)}}
+.robot-mouth{width:22px;height:4px;background:var(--blue);border-radius:3px;position:absolute;bottom:9px;left:50%;transform:translateX(-50%);animation:smile 4s infinite}
+@keyframes smile{0%,100%{width:22px}50%{width:16px;border-radius:50%}}
 
-/* Hero */
-.hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 80px; }
-.hero-content { max-width: 900px; z-index: 1; }
-.hero-badge { display: inline-block; padding: 10px 26px; background: rgba(30, 64, 175, 0.2); border: 1px solid rgba(30, 64, 175, 0.5); border-radius: 50px; font-size: 13px; color: #60A5FA; margin-bottom: 30px; font-weight: 600; }
-.hero-logo { font-size: 68px; font-weight: 900; color: #F8FAFC; margin-bottom: 25px; letter-spacing: 2px; }
-.hero-logo span { color: #C9A961; }
-.hero-title { font-size: 36px; font-weight: 700; margin-bottom: 25px; line-height: 1.5; color: #F8FAFC; }
-.hero-subtitle { font-size: 18px; color: #94A3B8; margin-bottom: 45px; line-height: 1.8; }
-.hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-.cta-primary { padding: 18px 45px; background: #C9A961; color: #0A1628; font-weight: 700; font-size: 16px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 20px rgba(201, 169, 97, 0.3); font-family: inherit; }
-.cta-primary:hover { background: #D9BC7A; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201, 169, 97, 0.4); }
-.cta-secondary { padding: 18px 45px; background: transparent; color: #C9A961; font-weight: 700; font-size: 16px; border-radius: 8px; border: 1.5px solid #C9A961; cursor: pointer; transition: all 0.3s; font-family: inherit; }
-.cta-secondary:hover { background: rgba(201, 169, 97, 0.1); }
+/* ===== نافذة المحادثة ===== */
+.chat-window{position:fixed;bottom:120px;left:30px;width:400px;max-width:calc(100vw - 40px);height:580px;max-height:calc(100vh - 160px);background:linear-gradient(180deg,#0F172A,#0A1628);border:1px solid rgba(201,169,97,0.3);border-radius:24px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.9);z-index:9998}
+.chat-window.active{display:flex;animation:slideUp 0.4s cubic-bezier(0.4,0,0.2,1)}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-header{background:linear-gradient(135deg,var(--blue),var(--gold));padding:20px 22px;display:flex;align-items:center;justify-content:space-between}
+.chat-header-title{font-weight:700;font-size:15px;color:#F8FAFC;display:flex;align-items:center;gap:10px}
+.chat-header-title::before{content:'';width:10px;height:10px;background:#10B981;border-radius:50%;box-shadow:0 0 10px #10B981;animation:onlinePulse 2s infinite}
+@keyframes onlinePulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.chat-close{background:transparent;border:none;color:#F8FAFC;font-size:26px;cursor:pointer;font-weight:700}
+.chat-messages{flex:1;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px}
+.chat-messages::-webkit-scrollbar{width:5px}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(201,169,97,0.3);border-radius:3px}
+.message{padding:13px 17px;border-radius:16px;font-size:14px;max-width:90%;line-height:1.7;animation:messageIn 0.3s ease-out}
+@keyframes messageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.message.bot{background:rgba(30,64,175,0.15);color:var(--text);align-self:flex-start;border:1px solid rgba(30,64,175,0.3)}
+.message.user{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:600;align-self:flex-end}
+.quick-questions{padding:14px 16px;border-top:1px solid rgba(201,169,97,0.15);background:rgba(10,22,40,0.6);display:flex;flex-wrap:wrap;gap:7px}
+.quick-q{background:rgba(201,169,97,0.08);border:1px solid rgba(201,169,97,0.3);color:var(--gold);padding:7px 14px;border-radius:20px;font-size:11px;cursor:pointer;transition:var(--transition);white-space:nowrap;font-family:inherit;font-weight:500}
+.quick-q:hover{background:rgba(201,169,97,0.25)}
+.chat-input-area{display:flex;padding:14px;gap:10px;border-top:1px solid rgba(201,169,97,0.2);background:#0A1628}
+.chat-input{flex:1;padding:14px 18px;border-radius:30px;border:1px solid rgba(201,169,97,0.3);background:#0F172A;color:var(--text);font-size:14px;outline:none;font-family:inherit;transition:var(--transition)}
+.chat-input:focus{border-color:var(--gold)}
+.chat-send{background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;border-radius:50%;width:46px;height:46px;cursor:pointer;font-size:18px;color:var(--bg);display:flex;align-items:center;justify-content:center;transition:transform 0.2s}
+.chat-send:hover{transform:scale(1.1)}
+.chat-send:disabled{opacity:0.5;cursor:not-allowed}
 
-/* Stats */
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; max-width: 1000px; margin: -50px auto 0; padding: 40px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(201, 169, 97, 0.2); border-radius: 20px; position: relative; z-index: 10; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
-.stat-item { text-align: center; padding: 10px; border-left: 1px solid rgba(201, 169, 97, 0.15); }
-.stat-item:first-child { border-left: none; }
-.stat-number { font-size: 32px; font-weight: 900; color: #C9A961; }
-.stat-label { font-size: 12px; color: #94A3B8; margin-top: 8px; }
-
-/* Sections */
-section { padding: 90px 25px; max-width: 1200px; margin: 0 auto; }
-.section-title { text-align: center; font-size: 38px; font-weight: 900; margin-bottom: 15px; color: #F8FAFC; }
-.section-title span { color: #C9A961; }
-.section-subtitle { text-align: center; color: #94A3B8; margin-bottom: 60px; font-size: 16px; }
-.problem-solution { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-.ps-card { padding: 45px; border-radius: 20px; transition: transform 0.4s; }
-.ps-card:hover { transform: translateY(-5px); }
-.ps-card.problem { background: rgba(220, 38, 38, 0.08); border: 1px solid rgba(220, 38, 38, 0.25); }
-.ps-card.solution { background: rgba(5, 150, 105, 0.08); border: 1px solid rgba(5, 150, 105, 0.25); }
-.ps-icon { font-size: 50px; margin-bottom: 20px; }
-.ps-title { font-size: 26px; font-weight: 700; margin-bottom: 18px; }
-.ps-card.problem .ps-title { color: #EF4444; }
-.ps-card.solution .ps-title { color: #10B981; }
-.ps-text { color: #94A3B8; font-size: 15px; }
-.ps-list { list-style: none; margin-top: 20px; }
-.ps-list li { padding: 8px 0; color: #CBD5E1; font-size: 14px; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-.feature-card { background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(201, 169, 97, 0.15); border-radius: 20px; overflow: hidden; transition: all 0.4s; }
-.feature-card:hover { transform: translateY(-8px); border-color: #C9A961; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
-.feature-image { width: 100%; height: 180px; object-fit: cover; opacity: 0.9; transition: transform 0.4s; }
-.feature-card:hover .feature-image { transform: scale(1.05); }
-.feature-content { padding: 28px; }
-.feature-icon { font-size: 40px; margin-bottom: 15px; }
-.feature-title { font-size: 21px; font-weight: 700; margin-bottom: 12px; color: #C9A961; }
-.feature-desc { color: #94A3B8; font-size: 14px; line-height: 1.7; }
-.about-content { background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(201, 169, 97, 0.2); border-radius: 20px; padding: 50px; text-align: right; font-size: 16px; }
-.about-content p { margin-bottom: 15px; color: #CBD5E1; line-height: 1.9; }
-.about-content strong { color: #C9A961; }
-
-/* Properties */
-.properties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
-.property-card { background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(201, 169, 97, 0.15); border-radius: 20px; overflow: hidden; transition: all 0.4s; }
-.property-card:hover { transform: translateY(-8px); border-color: #C9A961; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
-.property-image { height: 200px; background-size: cover; background-position: center; position: relative; }
-.property-badge { position: absolute; top: 15px; right: 15px; background: #C9A961; color: #0A1628; font-weight: 700; font-size: 12px; padding: 6px 14px; border-radius: 6px; }
-.property-content { padding: 25px; }
-.property-title { font-size: 20px; font-weight: 700; color: #C9A961; margin-bottom: 8px; }
-.property-location { color: #94A3B8; font-size: 14px; margin-bottom: 20px; }
-.property-details { background: rgba(10, 22, 40, 0.6); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
-.property-details div { color: #CBD5E1; font-size: 13px; padding: 5px 0; }
-.property-details strong { color: #F8FAFC; }
-.property-legal { background: rgba(30, 64, 175, 0.1); border: 1px solid rgba(30, 64, 175, 0.3); border-radius: 12px; padding: 15px; margin-bottom: 20px; }
-.property-legal div { color: #CBD5E1; font-size: 13px; padding: 5px 0; }
-.property-legal strong { color: #F8FAFC; }
-.property-button { width: 100%; padding: 15px; background: #C9A961; color: #0A1628; font-weight: 700; font-size: 15px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; font-family: inherit; }
-.property-button:hover { background: #D9BC7A; transform: translateY(-2px); }
-
-/* Books */
-.book-price { font-size: 26px; font-weight: 900; color: #C9A961; }
-.book-button { padding: 12px 28px; font-size: 14px; background: #C9A961; color: #0A1628; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; font-family: inherit; }
-.book-button:hover { background: #D9BC7A; transform: translateY(-2px); }
-
-/* Investors */
-.investors { background: linear-gradient(135deg, rgba(30, 64, 175, 0.15), rgba(201, 169, 97, 0.08)); border: 1px solid rgba(201, 169, 97, 0.25); border-radius: 25px; padding: 60px 35px; text-align: center; }
-.investors-title { font-size: 34px; font-weight: 900; margin-bottom: 20px; color: #C9A961; }
-.investors-desc { color: #94A3B8; max-width: 700px; margin: 0 auto 45px; font-size: 16px; }
-.investors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; margin-bottom: 35px; }
-.investor-stat { background: rgba(10, 22, 40, 0.7); border: 1px solid rgba(201, 169, 97, 0.2); border-radius: 15px; padding: 28px; transition: all 0.3s; }
-.investor-stat:hover { transform: translateY(-5px); border-color: #C9A961; }
-.investor-stat-num { font-size: 30px; font-weight: 900; color: #C9A961; }
-.investor-stat-label { font-size: 12px; color: #94A3B8; margin-top: 8px; }
-.cta-final { text-align: center; padding: 80px 25px; background: linear-gradient(135deg, rgba(30, 64, 175, 0.15), rgba(201, 169, 97, 0.08)); border-radius: 25px; margin: 40px auto; max-width: 1100px; border: 1px solid rgba(201, 169, 97, 0.2); }
-.cta-final-title { font-size: 36px; font-weight: 900; margin-bottom: 20px; color: #F8FAFC; }
-.cta-final-desc { color: #94A3B8; margin-bottom: 40px; font-size: 17px; }
-.footer { text-align: center; padding: 50px 20px; color: #64748B; font-size: 13px; border-top: 1px solid rgba(201, 169, 97, 0.1); }
-
-/* Chat */
-.chat-widget { position: fixed; bottom: 25px; left: 25px; width: 70px; height: 70px; background: linear-gradient(135deg, #1E40AF, #C9A961); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 30px rgba(201, 169, 97, 0.5); z-index: 1000; transition: transform 0.3s; animation: robotFloat 3s ease-in-out infinite; }
-.chat-widget:hover { transform: scale(1.1); }
-@keyframes robotFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-.robot-icon { width: 45px; height: 45px; position: relative; }
-.robot-head { width: 45px; height: 38px; background: #F8FAFC; border-radius: 12px 12px 8px 8px; position: relative; box-shadow: inset 0 -3px 0 rgba(30, 64, 175, 0.3); }
-.robot-antenna { width: 3px; height: 10px; background: #F8FAFC; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); }
-.robot-antenna::after { content: ''; width: 8px; height: 8px; background: #C9A961; border-radius: 50%; position: absolute; top: -6px; left: 50%; transform: translateX(-50%); animation: blink 1.5s infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-.robot-eye { width: 8px; height: 8px; background: #1E40AF; border-radius: 50%; position: absolute; top: 12px; animation: eyeBlink 3s infinite; }
-.robot-eye.left { left: 10px; }
-.robot-eye.right { right: 10px; }
-@keyframes eyeBlink { 0%, 90%, 100% { height: 8px; } 95% { height: 2px; } }
-.robot-mouth { width: 20px; height: 3px; background: #1E40AF; border-radius: 2px; position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); animation: smile 3s infinite; }
-@keyframes smile { 0%, 100% { width: 20px; } 50% { width: 14px; } }
-
-.chat-window { position: fixed; bottom: 105px; left: 25px; width: 380px; max-width: calc(100vw - 40px); height: 560px; max-height: calc(100vh - 140px); background: #0F172A; border: 1px solid rgba(201, 169, 97, 0.3); border-radius: 20px; overflow: hidden; display: none; flex-direction: column; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8); z-index: 999; }
-.chat-window.active { display: flex; animation: slideUp 0.3s ease-out; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.chat-header { background: linear-gradient(135deg, #1E40AF, #C9A961); padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; }
-.chat-header-title { font-weight: 700; font-size: 15px; color: #F8FAFC; }
-.chat-close { background: transparent; border: none; color: #F8FAFC; font-size: 24px; cursor: pointer; font-weight: 700; }
-.chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.chat-messages::-webkit-scrollbar { width: 6px; }
-.chat-messages::-webkit-scrollbar-thumb { background: rgba(201, 169, 97, 0.3); border-radius: 3px; }
-.message { padding: 12px 16px; border-radius: 14px; font-size: 14px; max-width: 88%; line-height: 1.6; }
-.message.bot { background: rgba(30, 64, 175, 0.15); color: #F8FAFC; align-self: flex-start; border: 1px solid rgba(30, 64, 175, 0.3); }
-.message.user { background: #C9A961; color: #0A1628; font-weight: 600; align-self: flex-end; }
-.quick-questions { padding: 12px 15px; border-top: 1px solid rgba(201, 169, 97, 0.15); background: rgba(10, 22, 40, 0.6); display: flex; flex-wrap: wrap; gap: 6px; }
-.quick-q { background: rgba(201, 169, 97, 0.1); border: 1px solid rgba(201, 169, 97, 0.3); color: #C9A961; padding: 6px 12px; border-radius: 20px; font-size: 11px; cursor: pointer; transition: all 0.3s; white-space: nowrap; font-family: inherit; }
-.quick-q:hover { background: rgba(201, 169, 97, 0.25); }
-.chat-input-area { display: flex; padding: 12px; gap: 8px; border-top: 1px solid rgba(201, 169, 97, 0.2); background: #0A1628; }
-.chat-input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid rgba(201, 169, 97, 0.3); background: #0F172A; color: #F8FAFC; font-size: 14px; outline: none; font-family: inherit; }
-.chat-input:focus { border-color: #C9A961; }
-.chat-send { background: #C9A961; border: none; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 18px; color: #0A1628; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
-.chat-send:hover { transform: scale(1.1); }
-
-.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-  nav { padding: 12px 15px; }
-  nav .brand { font-size: 20px; }
-  nav ul { gap: 10px; }
-  nav ul li:not(.lang-switch) { display: none; }
-  .lang-switch a { padding: 3px 8px; font-size: 10px; }
-  .hero-logo { font-size: 44px; }
-  .hero-title { font-size: 22px; }
-  .hero-subtitle { font-size: 15px; }
-  .section-title { font-size: 26px; }
-  .about-content { padding: 25px; text-align: center; }
-  .chat-window { height: 500px; width: calc(100vw - 30px); left: 15px; }
-  .chat-widget { left: 15px; bottom: 15px; }
-  .stats { padding: 25px; margin-top: -30px; }
-  .stat-number { font-size: 24px; }
-  .cta-primary, .cta-secondary { padding: 15px 30px; font-size: 14px; }
+@media (max-width: 768px){
+  nav{padding:12px 15px}
+  nav .brand{font-size:20px}
+  nav ul{gap:10px}
+  nav ul li:not(.lang-switch){display:none}
+  .lang-switch a{padding:4px 10px;font-size:10px}
+  .hero-logo{font-size:48px}
+  .hero-title{font-size:24px}
+  .hero-subtitle{font-size:15px}
+  .section-title{font-size:28px}
+  .about-content{padding:30px;text-align:center}
+  .chat-window{height:70vh;width:calc(100vw - 30px);left:15px;bottom:110px}
+  .chat-widget{left:15px;bottom:15px;width:68px;height:68px}
+  .stats{padding:25px;margin-top:-30px}
+  .stat-number{font-size:26px}
+  .cta-primary,.cta-secondary{padding:16px 32px;font-size:15px}
+  .problem-solution{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-
-<div class="bg-animation"></div>
+<div class="particles-bg"></div>
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
 
 <nav>
-<div class="brand">PLAN<span>VOR</span></div>
-<ul>
-<li><a href="#about">من نحن</a></li>
-<li><a href="#services">الخدمات</a></li>
-<li><a href="#properties">العقارات</a></li>
-<li><a href="#books">الكتب</a></li>
-<li><a href="#investors">للمستثمرين</a></li>
-<li class="lang-switch">
-<a href="index.html" class="active">AR</a>
-<a href="en.html">EN</a>
-<a href="de.html">DE</a>
-</li>
-</ul>
+  <div class="brand">PLAN<span>VOR</span></div>
+  <ul>
+    <li><a href="#about">من نحن</a></li>
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#properties">العقارات</a></li>
+    <li><a href="#books">الكتب</a></li>
+    <li><a href="#investors">للمستثمرين</a></li>
+    <li class="lang-switch">
+      <a href="index.html" class="active">AR</a>
+      <a href="en.html">EN</a>
+      <a href="de.html">DE</a>
+    </li>
+  </ul>
 </nav>
 
 <div class="hero">
-<div class="hero-content">
-<div class="hero-badge">🏛️ منصة التأسيس الموثوقة في ألمانيا</div>
-<div class="hero-logo">PLAN<span>VOR</span></div>
-<h1 class="hero-title">من الفكرة الأولى.. إلى لحظة الافتتاح</h1>
-<p class="hero-subtitle">نرافقك في كل خطوة لتأسيس مشروعك في ألمانيا وأوروبا، بأدوات ذكاء اصطناعي متخصصة ودعم بشري خبير.</p>
-<div class="hero-buttons">
-<button class="cta-primary" onclick="openChat()">💬 ابدأ رحلتك مجاناً</button>
-<button class="cta-secondary" onclick="document.getElementById('properties').scrollIntoView({behavior:'smooth'})">🏢 تصفح العقارات</button>
-</div>
-</div>
+  <div class="hero-content">
+    <div class="hero-badge">🏛️ منصة التأسيس الموثوقة في ألمانيا</div>
+    <div class="hero-logo">PLAN<span>VOR</span></div>
+    <h1 class="hero-title">من <span>الفكرة الأولى</span>.. إلى لحظة الافتتاح</h1>
+    <p class="hero-subtitle">نرافقك في كل خطوة لتأسيس مشروعك في ألمانيا وأوروبا، بأدوات ذكاء اصطناعي متخصصة ودعم بشري خبير.</p>
+    <div class="hero-buttons">
+      <button class="cta-primary" onclick="openChat()">💬 ابدأ رحلتك مجاناً</button>
+      <button class="cta-secondary" onclick="document.getElementById('properties').scrollIntoView({behavior:'smooth'})">🏢 تصفح العقارات</button>
+    </div>
+  </div>
 </div>
 
 <div class="stats fade-in">
-<div class="stat-item"><div class="stat-number">€450B</div><div class="stat-label">حجم سوق التأسيس في أوروبا</div></div>
-<div class="stat-item"><div class="stat-number">+5M</div><div class="stat-label">شركة جديدة سنوياً</div></div>
-<div class="stat-item"><div class="stat-number">85%</div><div class="stat-label">يفتقرون للإرشاد</div></div>
-<div class="stat-item"><div class="stat-number">3</div><div class="stat-label">لغات مدعومة</div></div>
+  <div class="stat-item"><div class="stat-number">€450B</div><div class="stat-label">حجم سوق التأسيس في أوروبا</div></div>
+  <div class="stat-item"><div class="stat-number">+5M</div><div class="stat-label">شركة جديدة سنوياً</div></div>
+  <div class="stat-item"><div class="stat-number">85%</div><div class="stat-label">يفتقرون للإرشاد</div></div>
+  <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">لغات مدعومة</div></div>
 </div>
 
 <section id="about" class="fade-in">
-<h2 class="section-title">من <span>نحن</span></h2>
-<p class="section-subtitle">القصة التي بدأت بحلم "أحمد"</p>
-<div class="about-content">
-<p><strong>في مدينة ديسلدورف، كان أحمد يحمل 40,000 يورو وحلماً كبيراً.</strong></p>
-<p>أراد أن يفتح مطعماً صغيراً. لكنه واجه جداراً من التعقيدات: Gewerbeamt، IHK، Finanzamt، التأمينات، الضرائب، التراخيص، الإيجارات...</p>
-<p>بحث في الإنترنت لأشهر. زار 10 مواقع مختلفة. تحدث مع 5 مستشارين. دفع أكثر من 3,000 يورو على استشارات متفرقة.</p>
-<p>وفي النهاية، اكتشف أن <strong>80% من المؤسسين يفشلون في السنة الأولى</strong> — ليس لأنهم غير قادرين، بل لأنهم <strong>لا يجدون الإرشاد المناسب في الوقت المناسب</strong>.</p>
-<p><strong>هنا وُلدت PLANVOR.</strong></p>
-<p>هدفنا واحد: <strong>أن لا يضيع أي حلم بسبب نقص المعلومات</strong>.</p>
-<p style="font-size: 19px; color: #C9A961; font-weight: 700; margin-top: 25px;">"لأنك تستحق أن تبدأ مشروعك بثقة، وليس بحيرة."</p>
-</div>
+  <h2 class="section-title">من <span>نحن</span></h2>
+  <p class="section-subtitle">القصة التي بدأت بحلم "أحمد"</p>
+  <div class="about-content">
+    <p><strong>في مدينة ديسلدورف، كان أحمد يحمل 40,000 يورو وحلماً كبيراً.</strong></p>
+    <p>أراد أن يفتح مطعماً صغيراً. لكنه واجه جداراً من التعقيدات: Gewerbeamt، IHK، Finanzamt، التأمينات، الضرائب، التراخيص، الإيجارات...</p>
+    <p>بحث في الإنترنت لأشهر. زار 10 مواقع مختلفة. تحدث مع 5 مستشارين. دفع أكثر من 3,000 يورو على استشارات متفرقة.</p>
+    <p>وفي النهاية، اكتشف أن <strong>80% من المؤسسين يفشلون في السنة الأولى</strong> — ليس لأنهم غير قادرين، بل لأنهم <strong>لا يجدون الإرشاد المناسب في الوقت المناسب</strong>.</p>
+    <p><strong>هنا وُلدت PLANVOR.</strong></p>
+    <p>هدفنا واحد: <strong>أن لا يضيع أي حلم بسبب نقص المعلومات</strong>.</p>
+    <p style="font-size:19px;color:#C9A961;font-weight:700;margin-top:25px">"لأنك تستحق أن تبدأ مشروعك بثقة، وليس بحيرة."</p>
+  </div>
 </section>
 
 <section class="fade-in">
-<h2 class="section-title">المشكلة التي <span>نحلها</span></h2>
-<p class="section-subtitle">لماذا يفشل 80% من المشاريع في ألمانيا؟</p>
-<div class="problem-solution">
-<div class="ps-card problem">
-<div class="ps-icon">❌</div>
-<div class="ps-title">المشكلة</div>
-<p class="ps-text">تأسيس مشروع في ألمانيا معقد ومربك:</p>
-<ul class="ps-list">
-<li>📋 بيروقراطية معقدة (Gewerbeamt, IHK, Finanzamt)</li>
-<li>💸 تكاليف غير متوقعة (تأمينات، ضرائب، رسوم)</li>
-<li>⚖️ قوانين ضريبية معقدة (Gewerbesteuer, Umsatzsteuer)</li>
-<li>🏪 صعوبة إيجاد المكان المناسب</li>
-<li>🤝 عدم معرفة المستشارين الموثوقين</li>
-</ul>
-</div>
-<div class="ps-card solution">
-<div class="ps-icon">✅</div>
-<div class="ps-title">الحل: PLANVOR</div>
-<p class="ps-text">منصة واحدة تحل كل شيء:</p>
-<ul class="ps-list">
-<li>🤖 مستشار ذكي متخصص في القوانين الألمانية</li>
-<li>📊 تحليل مالي دقيق لمشروعك</li>
-<li>🏪 اقتراح أفضل المواقع حسب ميزانيتك</li>
-<li>⚖️ ربطك بمستشارين ضريبيين معتمدين</li>
-<li>🛡️ عروض تأمين شاملة</li>
-<li>📚 كتب رقمية عملية للتأسيس</li>
-</ul>
-</div>
-</div>
+  <h2 class="section-title">المشكلة التي <span>نحلها</span></h2>
+  <p class="section-subtitle">لماذا يفشل 80% من المشاريع في ألمانيا؟</p>
+  <div class="problem-solution">
+    <div class="ps-card problem">
+      <div class="ps-icon">❌</div>
+      <div class="ps-title">المشكلة</div>
+      <p class="ps-text">تأسيس مشروع في ألمانيا معقد ومربك:</p>
+      <ul class="ps-list">
+        <li>📋 بيروقراطية معقدة (Gewerbeamt, IHK, Finanzamt)</li>
+        <li>💸 تكاليف غير متوقعة (تأمينات، ضرائب، رسوم)</li>
+        <li>⚖️ قوانين ضريبية معقدة (Gewerbesteuer, Umsatzsteuer)</li>
+        <li>🏪 صعوبة إيجاد المكان المناسب</li>
+        <li>🤝 عدم معرفة المستشارين الموثوقين</li>
+      </ul>
+    </div>
+    <div class="ps-card solution">
+      <div class="ps-icon">✅</div>
+      <div class="ps-title">الحل: PLANVOR</div>
+      <p class="ps-text">منصة واحدة تحل كل شيء:</p>
+      <ul class="ps-list">
+        <li>🤖 مستشار ذكي متخصص في القوانين الألمانية</li>
+        <li>📊 تحليل مالي دقيق لمشروعك</li>
+        <li>🏪 اقتراح أفضل المواقع حسب ميزانيتك</li>
+        <li>⚖️ ربطك بمستشارين ضريبيين معتمدين</li>
+        <li>🛡️ عروض تأمين شاملة</li>
+        <li>📚 كتب رقمية عملية للتأسيس</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section id="services" class="fade-in">
-<h2 class="section-title">ماذا <span>نقدم لك؟</span></h2>
-<p class="section-subtitle">كل ما تحتاجه لتأسيس مشروعك بنجاح</p>
-<div class="features-grid">
-<div class="feature-card">
-<img class="feature-image" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&fm=webp&q=80" alt="تحليل مالي" loading="lazy">
-<div class="feature-content"><div class="feature-icon">📊</div><div class="feature-title">تحليل مالي دقيق</div><div class="feature-desc">نحلل ميزانيتك ونقدم تقديرات دقيقة للتكاليف الشهرية والسنوية.</div></div>
-</div>
-<div class="feature-card">
-<img class="feature-image" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fm=webp&q=80" alt="مكان" loading="lazy">
-<div class="feature-content"><div class="feature-icon">🏪</div><div class="feature-title">إيجاد المكان المثالي</div><div class="feature-desc">نقترح أفضل المواقع حسب ميزانيتك وحجم مشروعك.</div></div>
-</div>
-<div class="feature-card">
-<img class="feature-image" src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&fm=webp&q=80" alt="ضرائب" loading="lazy">
-<div class="feature-content"><div class="feature-icon">⚖️</div><div class="feature-title">استشارة ضريبية</div><div class="feature-desc">نشرح كل الضرائب: Gewerbesteuer, Umsatzsteuer, Einkommensteuer.</div></div>
-</div>
-<div class="feature-card">
-<img class="feature-image" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&fm=webp&q=80" alt="تأمين" loading="lazy">
-<div class="feature-content"><div class="feature-icon">🛡️</div><div class="feature-title">تأمين شامل</div><div class="feature-desc">نربطك بأفضل عروض التأمين الصحي والقانوني والمسؤولية.</div></div>
-</div>
-</div>
+  <h2 class="section-title">ماذا <span>نقدم لك؟</span></h2>
+  <p class="section-subtitle">كل ما تحتاجه لتأسيس مشروعك بنجاح</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <img class="feature-image" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&fm=webp&q=80" alt="تحليل مالي" loading="lazy">
+      <div class="feature-content"><div class="feature-icon">📊</div><div class="feature-title">تحليل مالي دقيق</div><div class="feature-desc">نحلل ميزانيتك ونقدم تقديرات دقيقة للتكاليف الشهرية والسنوية.</div></div>
+    </div>
+    <div class="feature-card">
+      <img class="feature-image" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fm=webp&q=80" alt="مكان" loading="lazy">
+      <div class="feature-content"><div class="feature-icon">🏪</div><div class="feature-title">إيجاد المكان المثالي</div><div class="feature-desc">نقترح أفضل المواقع حسب ميزانيتك وحجم مشروعك.</div></div>
+    </div>
+    <div class="feature-card">
+      <img class="feature-image" src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&fm=webp&q=80" alt="ضرائب" loading="lazy">
+      <div class="feature-content"><div class="feature-icon">⚖️</div><div class="feature-title">استشارة ضريبية</div><div class="feature-desc">نشرح كل الضرائب: Gewerbesteuer, Umsatzsteuer, Einkommensteuer.</div></div>
+    </div>
+    <div class="feature-card">
+      <img class="feature-image" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&fm=webp&q=80" alt="تأمين" loading="lazy">
+      <div class="feature-content"><div class="feature-icon">🛡️</div><div class="feature-title">تأمين شامل</div><div class="feature-desc">نربطك بأفضل عروض التأمين الصحي والقانوني والمسؤولية.</div></div>
+    </div>
+  </div>
 </section>
 
 <section id="properties" class="fade-in">
-<h2 class="section-title">🏢 العقارات <span>التجارية</span></h2>
-<p class="section-subtitle">مطاعم، محلات، ومكاتب للإيجار في ألمانيا</p>
-<div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
-<input type="text" id="searchCity" placeholder="ابحث بالمدينة..." style="padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(201, 169, 97, 0.3); background: #0F172A; color: #F8FAFC; font-size: 14px; min-width: 200px; font-family: inherit;">
-<select id="filterType" style="padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(201, 169, 97, 0.3); background: #0F172A; color: #F8FAFC; font-size: 14px; font-family: inherit;">
-<option value="">كل الأنواع</option>
-<option value="مطعم">مطعم</option>
-<option value="محل">محل تجاري</option>
-<option value="مكتب">مكتب</option>
-</select>
-<select id="filterBudget" style="padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(201, 169, 97, 0.3); background: #0F172A; color: #F8FAFC; font-size: 14px; font-family: inherit;">
-<option value="">كل الميزانيات</option>
-<option value="1500">حتى €1,500</option>
-<option value="2500">حتى €2,500</option>
-<option value="4000">حتى €4,000</option>
-</select>
-</div>
-<div class="properties-grid" id="propertiesGrid">
-<div class="property-card" data-city="ديسلدورف" data-type="مطعم" data-rent="2000">
-<div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&fm=webp&q=80');">
-<span class="property-badge">مطعم</span>
-</div>
-<div class="property-content">
-<h3 class="property-title">مطعم 70م² في Altstadt</h3>
-<p class="property-location">📍 ديسلدورف، Altstadt</p>
-<div class="property-details">
-<div><strong>المساحة:</strong> 70 م²</div>
-<div><strong>الإيجار الصافي:</strong> €2,000/شهر</div>
-<div><strong>Nebenkosten:</strong> €350/شهر</div>
-<div><strong>الوديعة:</strong> €6,000 (3 أشهر)</div>
-</div>
-<div class="property-legal">
-<div><strong>مدة العقد:</strong> 5 سنوات</div>
-<div><strong>حماية المنافسة:</strong> ✅ نعم</div>
-<div><strong>مدة الإشعار:</strong> 3 أشهر</div>
-</div>
-<button class="property-button" onclick="requestProperty('مطعم 70م² في Altstadt')">📩 اطلب معاينة</button>
-</div>
-</div>
-<div class="property-card" data-city="برلين" data-type="محل" data-rent="1800">
-<div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fm=webp&q=80');">
-<span class="property-badge">محل تجاري</span>
-</div>
-<div class="property-content">
-<h3 class="property-title">محل 50م² في Mitte</h3>
-<p class="property-location">📍 برلين، Mitte</p>
-<div class="property-details">
-<div><strong>المساحة:</strong> 50 م²</div>
-<div><strong>الإيجار الصافي:</strong> €1,800/شهر</div>
-<div><strong>Nebenkosten:</strong> €250/شهر</div>
-<div><strong>الوديعة:</strong> €5,400 (3 أشهر)</div>
-</div>
-<div class="property-legal">
-<div><strong>مدة العقد:</strong> 3 سنوات</div>
-<div><strong>حماية المنافسة:</strong> ⚠️ محدودة</div>
-<div><strong>مدة الإشعار:</strong> 3 أشهر</div>
-</div>
-<button class="property-button" onclick="requestProperty('محل 50م² في Mitte')">📩 اطلب معاينة</button>
-</div>
-</div>
-<div class="property-card" data-city="ميونيخ" data-type="مطعم" data-rent="3500">
-<div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&fm=webp&q=80');">
-<span class="property-badge">مطعم</span>
-</div>
-<div class="property-content">
-<h3 class="property-title">مطعم 120م² في Schwabing</h3>
-<p class="property-location">📍 ميونيخ، Schwabing</p>
-<div class="property-details">
-<div><strong>المساحة:</strong> 120 م²</div>
-<div><strong>الإيجار الصافي:</strong> €3,500/شهر</div>
-<div><strong>Nebenkosten:</strong> €500/شهر</div>
-<div><strong>الوديعة:</strong> €10,500 (3 أشهر)</div>
-</div>
-<div class="property-legal">
-<div><strong>مدة العقد:</strong> 10 سنوات</div>
-<div><strong>حماية المنافسة:</strong> ✅ نعم</div>
-<div><strong>مدة الإشعار:</strong> 6 أشهر</div>
-</div>
-<button class="property-button" onclick="requestProperty('مطعم 120م² في Schwabing')">📩 اطلب معاينة</button>
-</div>
-</div>
-</div>
-<p style="text-align: center; color: #94A3B8; margin-top: 40px; font-size: 15px; padding: 20px; background: rgba(30, 64, 175, 0.1); border-radius: 12px; max-width: 600px; margin-left: auto; margin-right: auto; border: 1px solid rgba(30, 64, 175, 0.2);">📌 <strong>قائمة العقارات قيد التحديث.</strong> لديك عقار تجاري للإيجار؟ <a href="https://wa.me/49123456789" style="color: #C9A961;">تواصل معنا</a> لإضافته مجاناً.</p>
+  <h2 class="section-title">🏢 العقارات <span>التجارية</span></h2>
+  <p class="section-subtitle">مطاعم، محلات، ومكاتب للإيجار في ألمانيا</p>
+  <div class="filters">
+    <input type="text" id="searchCity" placeholder="ابحث بالمدينة...">
+    <select id="filterType">
+      <option value="">كل الأنواع</option>
+      <option value="مطعم">مطعم</option>
+      <option value="محل">محل تجاري</option>
+      <option value="مكتب">مكتب</option>
+    </select>
+    <select id="filterBudget">
+      <option value="">كل الميزانيات</option>
+      <option value="1500">حتى €1,500</option>
+      <option value="2500">حتى €2,500</option>
+      <option value="4000">حتى €4,000</option>
+    </select>
+  </div>
+  <div class="properties-grid" id="propertiesGrid">
+    <div class="property-card" data-city="ديسلدورف" data-type="مطعم" data-rent="2000">
+      <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&fm=webp&q=80')"><span class="property-badge">مطعم</span></div>
+      <div class="property-content">
+        <h3 class="property-title">مطعم 70م² في Altstadt</h3>
+        <p class="property-location">📍 ديسلدورف، Altstadt</p>
+        <div class="property-details">
+          <div><strong>المساحة:</strong> 70 م²</div>
+          <div><strong>الإيجار الصافي:</strong> €2,000/شهر</div>
+          <div><strong>Nebenkosten:</strong> €350/شهر</div>
+          <div><strong>الوديعة:</strong> €6,000</div>
+        </div>
+        <div class="property-legal">
+          <div><strong>مدة العقد:</strong> 5 سنوات</div>
+          <div><strong>حماية المنافسة:</strong> ✅ نعم</div>
+          <div><strong>مدة الإشعار:</strong> 3 أشهر</div>
+        </div>
+        <button class="property-button" onclick="requestProperty('مطعم 70م² في Altstadt')">📩 اطلب معاينة</button>
+      </div>
+    </div>
+    <div class="property-card" data-city="برلين" data-type="محل" data-rent="1800">
+      <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fm=webp&q=80')"><span class="property-badge">محل تجاري</span></div>
+      <div class="property-content">
+        <h3 class="property-title">محل 50م² في Mitte</h3>
+        <p class="property-location">📍 برلين، Mitte</p>
+        <div class="property-details">
+          <div><strong>المساحة:</strong> 50 م²</div>
+          <div><strong>الإيجار الصافي:</strong> €1,800/شهر</div>
+          <div><strong>Nebenkosten:</strong> €250/شهر</div>
+          <div><strong>الوديعة:</strong> €5,400</div>
+        </div>
+        <div class="property-legal">
+          <div><strong>مدة العقد:</strong> 3 سنوات</div>
+          <div><strong>حماية المنافسة:</strong> ⚠️ محدودة</div>
+          <div><strong>مدة الإشعار:</strong> 3 أشهر</div>
+        </div>
+        <button class="property-button" onclick="requestProperty('محل 50م² في Mitte')">📩 اطلب معاينة</button>
+      </div>
+    </div>
+    <div class="property-card" data-city="ميونيخ" data-type="مطعم" data-rent="3500">
+      <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&fm=webp&q=80')"><span class="property-badge">مطعم</span></div>
+      <div class="property-content">
+        <h3 class="property-title">مطعم 120م² في Schwabing</h3>
+        <p class="property-location">📍 ميونيخ، Schwabing</p>
+        <div class="property-details">
+          <div><strong>المساحة:</strong> 120 م²</div>
+          <div><strong>الإيجار الصافي:</strong> €3,500/شهر</div>
+          <div><strong>Nebenkosten:</strong> €500/شهر</div>
+          <div><strong>الوديعة:</strong> €10,500</div>
+        </div>
+        <div class="property-legal">
+          <div><strong>مدة العقد:</strong> 10 سنوات</div>
+          <div><strong>حماية المنافسة:</strong> ✅ نعم</div>
+          <div><strong>مدة الإشعار:</strong> 6 أشهر</div>
+        </div>
+        <button class="property-button" onclick="requestProperty('مطعم 120م² في Schwabing')">📩 اطلب معاينة</button>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;color:#94A3B8;margin-top:40px;font-size:15px;padding:20px;background:rgba(30,64,175,0.1);border-radius:12px;max-width:600px;margin-left:auto;margin-right:auto;border:1px solid rgba(30,64,175,0.2)">📌 <strong>قائمة العقارات قيد التحديث.</strong> لديك عقار تجاري للإيجار؟ <a href="https://wa.me/49123456789" style="color:#C9A961">تواصل معنا</a> لإضافته مجاناً.</p>
 </section>
 
 <section id="books" class="fade-in">
-<h2 class="section-title">📚 الكتب <span>الرقمية</span></h2>
-<p class="section-subtitle">أدلة عملية لبدء مشروعك في ألمانيا</p>
-<div class="features-grid">
-<div class="feature-card">
-<img class="feature-image" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&fm=webp&q=80" alt="كتاب المطعم" loading="lazy">
-<div class="feature-content">
-<div class="feature-icon">📖</div>
-<div class="feature-title">دليل تأسيس مطعم في ألمانيا</div>
-<div class="feature-desc">كل ما تحتاجه: التراخيص، التكاليف، الضرائب، التأمينات. 120 صفحة.</div>
-<div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
-<span class="book-price">€29</span>
-<button class="book-button" onclick="buyBook('restaurant')">اشترِ الآن</button>
-</div>
-</div>
-</div>
-<div class="feature-card">
-<img class="feature-image" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&fm=webp&q=80" alt="كتاب المخبز" loading="lazy">
-<div class="feature-content">
-<div class="feature-icon">📖</div>
-<div class="feature-title">دليل تأسيس مخبز في ألمانيا</div>
-<div class="feature-desc">دليل شامل لمشروع المخبز: المعدات، التراخيص، التسعير. 100 صفحة.</div>
-<div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
-<span class="book-price">€29</span>
-<button class="book-button" onclick="buyBook('bakery')">اشترِ الآن</button>
-</div>
-</div>
-</div>
-<div class="feature-card">
-<img class="feature-image" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fm=webp&q=80" alt="كتاب المتجر" loading="lazy">
-<div class="feature-content">
-<div class="feature-icon">📖</div>
-<div class="feature-title">دليل تأسيس متجر في ألمانيا</div>
-<div class="feature-desc">كل ما تحتاجه لمشروع تجاري ناجح: الموقع، الضرائب، التأمينات. 110 صفحات.</div>
-<div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
-<span class="book-price">€29</span>
-<button class="book-button" onclick="buyBook('shop')">اشترِ الآن</button>
-</div>
-</div>
-</div>
-</div>
+  <h2 class="section-title">📚 الكتب <span>الرقمية</span></h2>
+  <p class="section-subtitle">أدلة عملية لبدء مشروعك في ألمانيا</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <img class="feature-image" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&fm=webp&q=80" alt="كتاب المطعم" loading="lazy">
+      <div class="feature-content">
+        <div class="feature-icon">📖</div>
+        <div class="feature-title">دليل تأسيس مطعم في ألمانيا</div>
+        <div class="feature-desc">كل ما تحتاجه: التراخيص، التكاليف، الضرائب، التأمينات. 120 صفحة.</div>
+        <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center">
+          <span class="book-price">€29</span>
+          <button class="book-button" onclick="buyBook('restaurant')">اشترِ الآن</button>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <img class="feature-image" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&fm=webp&q=80" alt="كتاب المخبز" loading="lazy">
+      <div class="feature-content">
+        <div class="feature-icon">📖</div>
+        <div class="feature-title">دليل تأسيس مخبز في ألمانيا</div>
+        <div class="feature-desc">دليل شامل لمشروع المخبز: المعدات، التراخيص، التسعير. 100 صفحة.</div>
+        <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center">
+          <span class="book-price">€29</span>
+          <button class="book-button" onclick="buyBook('bakery')">اشترِ الآن</button>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <img class="feature-image" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&fm=webp&q=80" alt="كتاب المتجر" loading="lazy">
+      <div class="feature-content">
+        <div class="feature-icon">📖</div>
+        <div class="feature-title">دليل تأسيس متجر في ألمانيا</div>
+        <div class="feature-desc">كل ما تحتاجه لمشروع تجاري ناجح: الموقع، الضرائب، التأمينات. 110 صفحات.</div>
+        <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center">
+          <span class="book-price">€29</span>
+          <button class="book-button" onclick="buyBook('shop')">اشترِ الآن</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="investors" class="fade-in">
-<div class="investors">
-<h2 class="investors-title">💼 فرصة استثمارية</h2>
-<p class="investors-desc">PLANVOR ليست مجرد منصة، بل نظام بيئي كامل لتمكين رواد الأعمال في أوروبا.</p>
-<div class="investors-grid">
-<div class="investor-stat"><div class="investor-stat-num">€450B</div><div class="investor-stat-label">حجم سوق تأسيس الشركات في أوروبا</div></div>
-<div class="investor-stat"><div class="investor-stat-num">+5M</div><div class="investor-stat-label">شركة جديدة سنوياً في ألمانيا</div></div>
-<div class="investor-stat"><div class="investor-stat-num">85%</div><div class="investor-stat-label">من المؤسسين يفتقرون للإرشاد</div></div>
-<div class="investor-stat"><div class="investor-stat-num">3x</div><div class="investor-stat-label">نمو متوقع خلال 3 سنوات</div></div>
-</div>
-<button class="cta-primary" onclick="openChat()">تواصل معنا للاستثمار</button>
-</div>
+  <div class="investors">
+    <h2 class="investors-title">💼 فرصة استثمارية</h2>
+    <p class="investors-desc">PLANVOR ليست مجرد منصة، بل نظام بيئي كامل لتمكين رواد الأعمال في أوروبا.</p>
+    <div class="investors-grid">
+      <div class="investor-stat"><div class="investor-stat-num">€450B</div><div class="investor-stat-label">حجم سوق تأسيس الشركات في أوروبا</div></div>
+      <div class="investor-stat"><div class="investor-stat-num">+5M</div><div class="investor-stat-label">شركة جديدة سنوياً في ألمانيا</div></div>
+      <div class="investor-stat"><div class="investor-stat-num">85%</div><div class="investor-stat-label">من المؤسسين يفتقرون للإرشاد</div></div>
+      <div class="investor-stat"><div class="investor-stat-num">3x</div><div class="investor-stat-label">نمو متوقع خلال 3 سنوات</div></div>
+    </div>
+    <button class="cta-primary" onclick="openChat()">تواصل معنا للاستثمار</button>
+  </div>
 </section>
 
 <section class="fade-in">
-<h2 class="section-title">كن أول <span>المستخدمين</span></h2>
-<p class="section-subtitle">PLANVOR في مرحلة الإطلاق</p>
-<div class="about-content" style="text-align: center;">
-<p style="font-size: 18px;"><strong>نحن في المرحلة الأولى من إطلاق PLANVOR.</strong></p>
-<p>نبحث عن <strong>أول 10 مؤسسين</strong> لتجربة المنصة مجاناً، ومشاركة تجربتهم معنا.</p>
-<p style="margin-top: 25px;">🎁 <strong>مقابل مجاني:</strong> الحصول على استشارة مخصصة + كتاب رقمي مجاني.</p>
-<button class="cta-primary" style="margin-top: 20px;" onclick="openChat()">انضم كأول مستخدم</button>
-</div>
+  <h2 class="section-title">كن أول <span>المستخدمين</span></h2>
+  <p class="section-subtitle">PLANVOR في مرحلة الإطلاق</p>
+  <div class="about-content" style="text-align:center">
+    <p style="font-size:18px"><strong>نحن في المرحلة الأولى من إطلاق PLANVOR.</strong></p>
+    <p>نبحث عن <strong>أول 10 مؤسسين</strong> لتجربة المنصة مجاناً، ومشاركة تجربتهم معنا.</p>
+    <p style="margin-top:25px">🎁 <strong>مقابل مجاني:</strong> الحصول على استشارة مخصصة + كتاب رقمي مجاني.</p>
+    <button class="cta-primary" style="margin-top:20px" onclick="openChat()">انضم كأول مستخدم</button>
+  </div>
 </section>
 
 <div class="cta-final fade-in">
-<h2 class="cta-final-title">جاهز لبدء مشروعك؟</h2>
-<p class="cta-final-desc">ابدأ رحلتك مع PLANVOR. ابدأ مجاناً اليوم، واحصل على أول كتاب رقمي.</p>
-<button class="cta-primary" onclick="document.getElementById('books').scrollIntoView({behavior:'smooth'})">تصفح الكتب الآن</button>
+  <h2 class="cta-final-title">جاهز <span>لبدء مشروعك؟</span></h2>
+  <p class="cta-final-desc">ابدأ رحلتك مع PLANVOR. ابدأ مجاناً اليوم، واحصل على أول كتاب رقمي.</p>
+  <button class="cta-primary" onclick="document.getElementById('books').scrollIntoView({behavior:'smooth'})">تصفح الكتب الآن</button>
 </div>
 
-<div class="footer">© 2026 PLANVOR — جميع الحقوق محفوظة | صُنع بـ ❤️ في ألمانيا</div>
+<div class="footer">
+  <div class="footer-brand">PLAN<span>VOR</span></div>
+  <p>© 2026 PLANVOR — جميع الحقوق محفوظة | صُنع بـ ❤️ في ألمانيا</p>
+</div>
 
+<!-- رأس الروبوت — المستشار الذكي -->
 <div class="chat-widget" onclick="toggleChat()">
-    <div class="robot-icon">
-        <div class="robot-antenna"></div>
-        <div class="robot-head">
-            <div class="robot-eye left"></div>
-            <div class="robot-eye right"></div>
-            <div class="robot-mouth"></div>
-        </div>
+  <div class="robot-icon">
+    <div class="robot-antenna"></div>
+    <div class="robot-head">
+      <div class="robot-eye left"></div>
+      <div class="robot-eye right"></div>
+      <div class="robot-mouth"></div>
     </div>
+  </div>
 </div>
 
+<!-- نافذة المحادثة -->
 <div class="chat-window" id="chatWindow">
-<div class="chat-header">
-<span class="chat-header-title">⚡ مستشار PLANVOR الذكي</span>
-<button class="chat-close" onclick="toggleChat()">×</button>
-</div>
-<div class="chat-messages" id="chatMessages">
-<div class="message bot">مرحباً! أنا مستشارك الذكي في PLANVOR. اختر سؤالاً من الأسفل أو اكتب سؤالك مباشرة. 👇</div>
-</div>
-<div class="quick-questions">
-<button class="quick-q" onclick="quickAsk('كم أحتاج لتأسيس مطعم صغير في ديسلدورف؟')">💰 ميزانية مطعم</button>
-<button class="quick-q" onclick="quickAsk('ما هي الضرائب التي سأدفعها كصاحب مطعم في ألمانيا؟')">⚖️ الضرائب</button>
-<button class="quick-q" onclick="quickAsk('ما التراخيص المطلوبة لفتح مطعم في ألمانيا؟')">📋 التراخيص</button>
-<button class="quick-q" onclick="quickAsk('ما الفرق بين Betriebshaftpflicht و Rechtsschutz؟')">🛡️ التأمينات</button>
-<button class="quick-q" onclick="quickAsk('كيف أسجل شركتي في Gewerbeamt؟')">📝 تسجيل الشركة</button>
-<button class="quick-q" onclick="quickAsk('كيف أختار المكان المناسب لمشروعي؟')">📍 اختيار المكان</button>
-</div>
-<div class="chat-input-area">
-<input type="text" class="chat-input" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleKeyPress(event)">
-<button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
-</div>
+  <div class="chat-header">
+    <span class="chat-header-title">⚡ مستشار PLANVOR الذكي</span>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot">مرحباً! أنا مستشارك الذكي في PLANVOR. اختر سؤالاً من الأسفل أو اكتب سؤالك مباشرة. 👇</div>
+  </div>
+  <div class="quick-questions">
+    <button class="quick-q" onclick="quickAsk('كم أحتاج لتأسيس مطعم صغير في ديسلدورف؟')">💰 ميزانية مطعم</button>
+    <button class="quick-q" onclick="quickAsk('ما هي الضرائب التي سأدفعها كصاحب مطعم في ألمانيا؟')">⚖️ الضرائب</button>
+    <button class="quick-q" onclick="quickAsk('ما التراخيص المطلوبة لفتح مطعم في ألمانيا؟')">📋 التراخيص</button>
+    <button class="quick-q" onclick="quickAsk('ما الفرق بين Betriebshaftpflicht و Rechtsschutz؟')">🛡️ التأمينات</button>
+    <button class="quick-q" onclick="quickAsk('كيف أسجل شركتي في Gewerbeamt؟')">📝 تسجيل الشركة</button>
+    <button class="quick-q" onclick="quickAsk('كيف أختار المكان المناسب لمشروعي؟')">📍 اختيار المكان</button>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" class="chat-input" id="chatInput" placeholder="اكتب سؤالك..." onkeypress="handleKeyPress(event)">
+    <button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
+  </div>
 </div>
 
 <script>
@@ -485,22 +505,18 @@ function buyBook(type) {
     const message = 'مرحباً، أريد شراء كتاب ' + type + ' من PLANVOR';
     window.open('https://wa.me/49123456789?text=' + encodeURIComponent(message), '_blank');
 }
-
 function requestProperty(title) {
-    const message = "مرحباً، أنا مهتم بالعقار التالي: " + title + "\nيرجى التواصل معي لترتيب معاينة.";
+    const message = "مرحباً، أنا مهتم بالعقار التالي: " + title;
     window.open("https://wa.me/49123456789?text=" + encodeURIComponent(message), "_blank");
 }
-
 const searchCity = document.getElementById('searchCity');
 const filterType = document.getElementById('filterType');
 const filterBudget = document.getElementById('filterBudget');
-
 function filterProperties() {
     const city = searchCity.value.toLowerCase();
     const type = filterType.value;
     const budget = parseInt(filterBudget.value) || Infinity;
-    const cards = document.querySelectorAll('.property-card');
-    cards.forEach(card => {
+    document.querySelectorAll('.property-card').forEach(card => {
         const cardCity = card.dataset.city.toLowerCase();
         const cardType = card.dataset.type;
         const cardRent = parseInt(card.dataset.rent);
