@@ -33,8 +33,11 @@ nav ul a:hover{color:var(--gold)}
 .lang-switch a.active{background:var(--gold);color:var(--bg);font-weight:700;border-color:var(--gold)}
 .services-bar{position:fixed;top:70px;width:100%;z-index:999;background:rgba(10,22,40,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(96,165,250,0.2);padding:12px 15px;display:flex;gap:10px;overflow-x:auto;scrollbar-width:none}
 .services-bar::-webkit-scrollbar{display:none}
-.service-chip{display:flex;align-items:center;gap:8px;padding:10px 18px;background:linear-gradient(135deg,rgba(30,64,175,0.2),rgba(96,165,250,0.08));border:1px solid rgba(96,165,250,0.3);border-radius:50px;color:#93C5FD;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;font-family:inherit}
+.service-chip{display:flex;align-items:center;gap:8px;padding:10px 18px;background:linear-gradient(135deg,rgba(30,64,175,0.2),rgba(96,165,250,0.08));border:1px solid rgba(96,165,250,0.3);border-radius:50px;color:#93C5FD;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;font-family:inherit;transition:all 0.3s}
+.service-chip:hover{transform:translateY(-3px);border-color:#60A5FA;box-shadow:0 8px 25px rgba(96,165,250,0.3)}
 .service-chip.gold{background:linear-gradient(135deg,rgba(201,169,97,0.2),rgba(217,188,122,0.08));border-color:rgba(201,169,97,0.4);color:#C9A961}
+.svc-icon{width:20px;height:20px;flex-shrink:0;transition:transform 0.3s}
+.service-chip:hover .svc-icon{transform:scale(1.2) rotate(-5deg)}
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:200px 25px 100px}
 .hero-content{max-width:950px;z-index:1}
 .hero-badge{display:inline-block;padding:10px 24px;background:rgba(30,64,175,0.15);border:1px solid rgba(59,130,246,0.4);border-radius:50px;font-size:13px;color:#60A5FA;margin-bottom:35px;font-weight:600}
@@ -44,8 +47,12 @@ nav ul a:hover{color:var(--gold)}
 .hero-title span{color:var(--gold)}
 .hero-subtitle{font-size:19px;color:var(--text-2);margin-bottom:50px;line-height:1.9;max-width:750px;margin-left:auto;margin-right:auto}
 .hero-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.cta-primary{padding:20px 50px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;font-size:17px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;box-shadow:0 10px 40px rgba(201,169,97,0.25)}
-.cta-secondary{padding:20px 50px;background:transparent;color:var(--gold);font-weight:700;font-size:17px;border-radius:12px;border:2px solid var(--gold);cursor:pointer;font-family:inherit}
+.cta-primary{padding:20px 50px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--bg);font-weight:700;font-size:17px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;box-shadow:0 10px 40px rgba(201,169,97,0.25);position:relative;overflow:hidden;transition:all 0.4s}
+.cta-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.7s}
+.cta-primary:hover::before{left:100%}
+.cta-primary:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(201,169,97,0.5)}
+.cta-secondary{padding:20px 50px;background:transparent;color:var(--gold);font-weight:700;font-size:17px;border-radius:12px;border:2px solid var(--gold);cursor:pointer;font-family:inherit;transition:all 0.3s}
+.cta-secondary:hover{background:rgba(201,169,97,0.1);transform:translateY(-3px)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:1050px;margin:-60px auto 0;padding:45px;background:rgba(15,23,42,0.95);border:1px solid var(--border);border-radius:24px;position:relative;z-index:10;box-shadow:var(--shadow)}
 .stat-item{text-align:center;padding:15px 10px;border-left:1px solid var(--border)}
 .stat-item:first-child{border-left:none}
@@ -59,7 +66,10 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto;scroll-margin-top:150p
 .about-content p{margin-bottom:18px;color:var(--text-2);line-height:2}
 .about-content strong{color:var(--gold)}
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:28px}
-.feature-card{background:rgba(15,23,42,0.9);border:1px solid var(--border);border-radius:24px;overflow:hidden}
+.feature-card{background:rgba(15,23,42,0.9);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:all 0.5s;position:relative}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C9A961,#3B82F6);transform:scaleX(0);transform-origin:right;transition:transform 0.4s;z-index:1}
+.feature-card:hover::before{transform:scaleX(1)}
+.feature-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 30px 60px rgba(96,165,250,0.2),0 0 40px rgba(201,169,97,0.15)}
 .feature-image{width:100%;height:200px;object-fit:cover;opacity:0.85}
 .feature-content{padding:30px}
 .feature-icon{font-size:42px;margin-bottom:16px}
@@ -69,39 +79,13 @@ section{padding:100px 25px;max-width:1200px;margin:0 auto;scroll-margin-top:150p
 .footer-brand{font-size:22px;font-weight:900;margin-bottom:15px}
 .footer-brand span{color:var(--gold)}
 
-/* ===== رأس الإنسان الرقمي ===== */
-.chat-widget{position:fixed;bottom:30px;left:30px;width:120px;height:140px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;animation:aiFloat 4s ease-in-out infinite}
-@keyframes aiFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* ===== وجه إنسان رقمي ===== */
+.chat-widget{position:fixed;bottom:30px;left:30px;width:140px;height:170px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;animation:aiFloat 4s ease-in-out infinite;filter:drop-shadow(0 0 40px rgba(96,165,250,0.8))}
+@keyframes aiFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .chat-widget:hover{transform:scale(1.08)}
-.ai-halo{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.5) 0%,rgba(59,130,246,0.2) 40%,transparent 70%);animation:haloPulse 3s ease-in-out infinite;filter:blur(12px);z-index:-1}
-@keyframes haloPulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.3);opacity:1}}
-.ai-ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:90px;height:14px;border-radius:50%;border:2px solid rgba(96,165,250,0.6);border-top-color:transparent;animation:ringSpin 4s linear infinite;filter:drop-shadow(0 0 10px #60A5FA)}
-@keyframes ringSpin{from{transform:translateX(-50%) rotateY(0deg)}to{transform:translateX(-50%) rotateY(360deg)}}
-.ai-head{width:80px;height:100px;position:relative;filter:drop-shadow(0 0 25px rgba(96,165,250,0.8))}
-.ai-skull{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(147,197,253,0.55) 0%,rgba(96,165,250,0.4) 30%,rgba(59,130,246,0.3) 55%,rgba(30,64,175,0.15) 80%,transparent 100%);border-radius:50% 50% 42% 42%;box-shadow:inset 0 -15px 30px rgba(30,64,175,0.5),inset 0 10px 20px rgba(147,197,253,0.3)}
-.ai-mesh{position:absolute;inset:0;border-radius:50% 50% 42% 42%;background-image:radial-gradient(circle at 30% 30%,rgba(147,197,253,0.25) 1px,transparent 1.5px),radial-gradient(circle at 70% 30%,rgba(147,197,253,0.25) 1px,transparent 1.5px),radial-gradient(circle at 50% 50%,rgba(147,197,253,0.25) 1px,transparent 1.5px),radial-gradient(circle at 30% 70%,rgba(147,197,253,0.25) 1px,transparent 1.5px),radial-gradient(circle at 70% 70%,rgba(147,197,253,0.25) 1px,transparent 1.5px);background-size:14px 14px;opacity:0.7;animation:meshShift 6s ease-in-out infinite}
-@keyframes meshShift{0%,100%{background-position:0 0}50%{background-position:5px 5px}}
-.ai-scan{position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(to right,transparent,#93C5FD,#60A5FA,#93C5FD,transparent);box-shadow:0 0 15px #60A5FA,0 0 30px #3B82F6;animation:scanMove 3s ease-in-out infinite;border-radius:50% 50% 0 0}
-@keyframes scanMove{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:95%;opacity:0}}
-.ai-eyes{position:absolute;top:38%;left:0;right:0;display:flex;justify-content:center;gap:22px;z-index:5}
-.ai-eye{width:10px;height:10px;background:#F8FAFC;border-radius:50%;box-shadow:0 0 15px #93C5FD,0 0 30px #60A5FA,0 0 45px #3B82F6;animation:eyeGlow 2s ease-in-out infinite}
-.ai-eye:nth-child(2){animation-delay:0.3s}
-@keyframes eyeGlow{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
-.ai-mouth{position:absolute;bottom:25%;left:50%;transform:translateX(-50%);display:flex;gap:2px;align-items:center;height:10px;z-index:5}
-.ai-mouth span{width:2.5px;background:#93C5FD;border-radius:2px;box-shadow:0 0 8px #60A5FA;animation:mouthWave 1.3s ease-in-out infinite}
-.ai-mouth span:nth-child(1){height:4px;animation-delay:0s}
-.ai-mouth span:nth-child(2){height:8px;animation-delay:0.15s}
-.ai-mouth span:nth-child(3){height:11px;animation-delay:0.3s}
-.ai-mouth span:nth-child(4){height:8px;animation-delay:0.45s}
-.ai-mouth span:nth-child(5){height:4px;animation-delay:0.6s}
-@keyframes mouthWave{0%,100%{transform:scaleY(0.4);opacity:0.5}50%{transform:scaleY(1);opacity:1}}
-.ai-particle{position:absolute;width:4px;height:4px;background:#93C5FD;border-radius:50%;box-shadow:0 0 10px #60A5FA,0 0 20px #3B82F6;pointer-events:none;z-index:6}
-.ai-particle:nth-child(1){top:15%;left:15%;animation:pFloat1 3s ease-in-out infinite}
-.ai-particle:nth-child(2){top:80%;right:15%;animation:pFloat2 4s ease-in-out infinite}
-.ai-particle:nth-child(3){top:50%;left:5%;animation:pFloat3 3.5s ease-in-out infinite}
-@keyframes pFloat1{0%,100%{transform:translate(0,0);opacity:0}50%{transform:translate(-6px,-12px);opacity:1}}
-@keyframes pFloat2{0%,100%{transform:translate(0,0);opacity:0}50%{transform:translate(8px,-10px);opacity:1}}
-@keyframes pFloat3{0%,100%{transform:translate(0,0);opacity:0}50%{transform:translate(-5px,8px);opacity:1}}
+.ai-halo{position:absolute;inset:-25px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.6) 0%,rgba(59,130,246,0.3) 40%,transparent 70%);animation:haloPulse 3s ease-in-out infinite;filter:blur(18px);z-index:-1}
+@keyframes haloPulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.4);opacity:1}}
+.ai-face{width:120px;height:150px;position:relative;filter:drop-shadow(0 0 20px rgba(96,165,250,0.9))}
 
 .chat-window{position:fixed;bottom:180px;left:30px;width:420px;max-width:calc(100vw - 40px);height:600px;max-height:calc(100vh - 200px);background:linear-gradient(180deg,#0F172A,#0A1628);border:1px solid rgba(96,165,250,0.35);border-radius:24px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.9);z-index:9998}
 .chat-window.active{display:flex}
@@ -129,7 +113,7 @@ nav ul li:not(.lang-switch){display:none}
 .section-title{font-size:28px}
 .about-content{padding:30px;text-align:center}
 .chat-window{height:70vh;width:calc(100vw - 30px);left:15px;bottom:170px}
-.chat-widget{left:15px;bottom:15px;width:100px;height:120px}
+.chat-widget{left:15px;bottom:15px;width:110px;height:140px}
 }
 </style>
 </head>
@@ -157,13 +141,34 @@ nav ul li:not(.lang-switch){display:none}
 </nav>
 
 <div class="services-bar">
-<div class="service-chip gold" onclick="openChat()"><span>🤖</span><span>مستشار ذكي</span></div>
-<a class="service-chip" href="#services"><span>📊</span><span>تحليل مالي</span></a>
-<a class="service-chip" href="#properties"><span>🏪</span><span>عقارات تجارية</span></a>
-<a class="service-chip" href="#services"><span>⚖️</span><span>استشارات ضريبية</span></a>
-<a class="service-chip" href="#services"><span>🛡️</span><span>تأمينات شاملة</span></a>
-<a class="service-chip" href="#books"><span>📚</span><span>كتب رقمية</span></a>
-<a class="service-chip" href="#investors"><span>💼</span><span>فرص استثمارية</span></a>
+<div class="service-chip gold" onclick="openChat()">
+<svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="#C9A961" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0-3 3v2a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3v-2a3 3 0 0 0-3-3V5a3 3 0 0 0-3-3z"/><circle cx="9" cy="14" r="1" fill="#C9A961"/><circle cx="15" cy="14" r="1" fill="#C9A961"/></svg>
+<span>مستشار ذكي</span>
+</div>
+<a class="service-chip" href="#services">
+<svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+<span>تحليل مالي</span>
+</a>
+<a class="service-chip" href="#properties">
+<svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+<span>عقارات تجارية</span>
+</a>
+<a class="service-chip" href="#services">
+<svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="#F472B6" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M5 7h11a3 3 0 0 1 0 6H5M5 13h13a3 3 0 0 1 0 6H5"/></svg>
+<span>استشارات ضريبية</span>
+</a>
+<a class="service-chip" href="#services">
+<svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+<span>تأمينات شاملة</span>
+</a>
+<a class="service-chip" href="#books">
+<svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+<span>كتب رقمية</span>
+</a>
+<a class="service-chip" href="#investors">
+<svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+<span>فرص استثمارية</span>
+</a>
 </div>
 
 <div class="hero">
@@ -247,24 +252,69 @@ nav ul li:not(.lang-switch){display:none}
 <p>© 2026 PLANVOR — جميع الحقوق محفوظة | صُنع بـ ❤️ في ألمانيا</p>
 </div>
 
+<!-- وجه المستشار الرقمي -->
 <div class="chat-widget" onclick="toggleChat()">
 <div class="ai-halo"></div>
-<div class="ai-ring"></div>
-<div class="ai-head">
-<div class="ai-skull"></div>
-<div class="ai-mesh"></div>
-<div class="ai-scan"></div>
-<div class="ai-eyes">
-<div class="ai-eye"></div>
-<div class="ai-eye"></div>
+<div class="ai-face">
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+<defs>
+<radialGradient id="faceGrad" cx="50%" cy="40%" r="60%">
+<stop offset="0%" stop-color="#93C5FD" stop-opacity="0.9"/>
+<stop offset="40%" stop-color="#3B82F6" stop-opacity="0.7"/>
+<stop offset="70%" stop-color="#1E40AF" stop-opacity="0.5"/>
+<stop offset="100%" stop-color="#0A1628" stop-opacity="0.2"/>
+</radialGradient>
+<radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#F8FAFC"/>
+<stop offset="50%" stop-color="#93C5FD"/>
+<stop offset="100%" stop-color="#3B82F6"/>
+</radialGradient>
+<filter id="glow">
+<feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+<feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<pattern id="meshPattern" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+<circle cx="1" cy="1" r="0.8" fill="#93C5FD" opacity="0.6"/>
+<circle cx="5" cy="5" r="0.8" fill="#60A5FA" opacity="0.4"/>
+</pattern>
+</defs>
+<ellipse cx="100" cy="110" rx="70" ry="85" fill="url(#faceGrad)" filter="url(#glow)"/>
+<ellipse cx="100" cy="110" rx="70" ry="85" fill="url(#meshPattern)" opacity="0.5"/>
+<ellipse cx="32" cy="115" rx="10" ry="18" fill="#3B82F6" opacity="0.6"/>
+<ellipse cx="168" cy="115" rx="10" ry="18" fill="#3B82F6" opacity="0.6"/>
+<ellipse cx="100" cy="110" rx="70" ry="85" fill="none" stroke="#60A5FA" stroke-width="0.5" opacity="0.4"/>
+<ellipse cx="100" cy="110" rx="55" ry="70" fill="none" stroke="#60A5FA" stroke-width="0.5" opacity="0.3"/>
+<ellipse cx="100" cy="110" rx="40" ry="55" fill="none" stroke="#60A5FA" stroke-width="0.5" opacity="0.3"/>
+<path d="M100 25 Q100 110 100 195" stroke="#93C5FD" stroke-width="0.5" fill="none" opacity="0.3"/>
+<path d="M70 30 Q75 110 70 190" stroke="#93C5FD" stroke-width="0.5" fill="none" opacity="0.25"/>
+<path d="M130 30 Q125 110 130 190" stroke="#93C5FD" stroke-width="0.5" fill="none" opacity="0.25"/>
+<ellipse cx="75" cy="100" rx="14" ry="9" fill="#0A1628" opacity="0.8"/>
+<ellipse cx="125" cy="100" rx="14" ry="9" fill="#0A1628" opacity="0.8"/>
+<circle cx="75" cy="100" r="6" fill="url(#eyeGlow)" filter="url(#glow)"/>
+<circle cx="125" cy="100" r="6" fill="url(#eyeGlow)" filter="url(#glow)"/>
+<circle cx="75" cy="100" r="2.5" fill="#F8FAFC"/>
+<circle cx="125" cy="100" r="2.5" fill="#F8FAFC"/>
+<path d="M58 82 Q75 75 92 82" stroke="#93C5FD" stroke-width="2" fill="none" opacity="0.7" filter="url(#glow)"/>
+<path d="M108 82 Q125 75 142 82" stroke="#93C5FD" stroke-width="2" fill="none" opacity="0.7" filter="url(#glow)"/>
+<path d="M100 105 L95 135 Q100 140 105 135 Z" stroke="#93C5FD" stroke-width="1.5" fill="none" opacity="0.6"/>
+<ellipse cx="96" cy="137" rx="2" ry="1.5" fill="#60A5FA" opacity="0.5"/>
+<ellipse cx="104" cy="137" rx="2" ry="1.5" fill="#60A5FA" opacity="0.5"/>
+<path d="M85 160 Q100 170 115 160" stroke="#93C5FD" stroke-width="2" fill="none" opacity="0.7" filter="url(#glow)"/>
+<path d="M85 160 L115 160" stroke="#93C5FD" stroke-width="1" fill="none" opacity="0.4"/>
+<path d="M35 90 Q100 85 165 90" stroke="#93C5FD" stroke-width="0.5" fill="none" opacity="0.3"/>
+<path d="M35 130 Q100 125 165 130" stroke="#93C5FD" stroke-width="0.5" fill="none" opacity="0.3"/>
+<circle cx="50" cy="70" r="1.5" fill="#93C5FD" opacity="0.8"/>
+<circle cx="150" cy="70" r="1.5" fill="#93C5FD" opacity="0.8"/>
+<circle cx="50" cy="150" r="1.5" fill="#93C5FD" opacity="0.8"/>
+<circle cx="150" cy="150" r="1.5" fill="#93C5FD" opacity="0.8"/>
+<circle cx="100" cy="50" r="1.5" fill="#93C5FD" opacity="0.8"/>
+<circle cx="100" cy="175" r="1.5" fill="#93C5FD" opacity="0.8"/>
+<rect x="20" y="0" width="160" height="3" fill="url(#eyeGlow)" opacity="0.9">
+<animate attributeName="y" from="0" to="250" dur="3s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
+</rect>
+</svg>
 </div>
-<div class="ai-mouth">
-<span></span><span></span><span></span><span></span><span></span>
-</div>
-</div>
-<div class="ai-particle"></div>
-<div class="ai-particle"></div>
-<div class="ai-particle"></div>
 </div>
 
 <div class="chat-window" id="chatWindow">
